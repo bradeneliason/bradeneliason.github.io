@@ -45,6 +45,7 @@ function lx_baz(com, _)
 end
 
 
+
 ################################################################################
 ##
 #                               Resume
@@ -235,6 +236,20 @@ function hfun_gallery(varargs)
   write(io, "</div>")
   return String(take!(io))
 end
+
+# """
+# Goes on pages like `/tag/3d_printing/`. Not to be used in other pages.
+# """
+# function hfun_custom_taglist()::String
+#   tag = locvar(:fd_tag)
+#   rpaths = globvar("fd_tag_pages")[tag]
+#   sort!(rpaths, by=get_date, rev=true)
+
+#   io = IOBuffer()
+#   post_list_from_paths(io, rpaths)
+#   return String(take!(io))
+# end
+
 
 ################################################################################
 ##
