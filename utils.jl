@@ -1,3 +1,5 @@
+# TODO: clean-up unused functions
+
 using Dates
 
 ################################################################################
@@ -260,7 +262,7 @@ end
 """
 Converts a blog file name ending with md into a 
 """
-mdfile_to_rpath(mdfile) = "blog\\" * splitext(mdfile)[1]
+mdfile_to_rpath(mdfile) = ".\\blog\\" * splitext(mdfile)[1]
 
 function post_list_from_paths(io, paths)
   write(io, """<ul class="post-list">""")
@@ -276,7 +278,7 @@ function post_list_from_paths(io, paths)
 end
 
 """
-Lists all blog posts
+Lists recent blog posts
 TODO: list just the top N posts?
 """
 function hfun_recentblogposts()
@@ -291,6 +293,37 @@ function hfun_recentblogposts()
   post_list_from_paths(io, list)
   return String(take!(io))
 end
+
+"""
+Lists all blog posts
+TODO: add pagination
+TODO: add optional images
+"""
+function hfun_allblogposts()::String
+  c = IOBuffer()
+
+  mdfilelist = readdir("blog")
+  rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
+  write(c, """<ul class="post-list">""")
+
+  for rpath in rpaths
+      title = pagevar(rpath, "title")
+      date = get_date(rpath)
+      if isnothing(title)
+          title = "/$rpath/"
+      end
+
+      date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
+
+      url = get_url(rpath)
+      # write(c, "<li><a href=\"$url\">$title</a></li>")
+      write(c, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
+  end
+
+  write(c, "</ul>")
+  return String(take!(c))
+end
+
 
 ################################################################################
 ##

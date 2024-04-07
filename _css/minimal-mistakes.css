@@ -682,9 +682,9 @@ body {
   color: #494e52;
   font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
   line-height: 1.5;
-  /* background-image: url("../assets/images/tiny_grid.png"); */
-  /* background-image: url("../assets/images/cartographer_light.png"); */
-  background-image: url("../assets/images/cartographer_light_blu1.png");
+  /* background-image: url("/assets/images/tiny_grid.png"); */
+  /* background-image: url("/assets/images/cartographer_light.png"); */
+  background-image: url("/assets/images/cartographer_light_blu1.png");
   background-position: left top;
   background-size: auto;
   background-repeat: repeat;
