@@ -1,2 +1,0 @@
-ArgumentError: Package ApproxFun not found in current path.
-- Run `import Pkg; Pkg.add("ApproxFun")` to install the ApproxFun package.

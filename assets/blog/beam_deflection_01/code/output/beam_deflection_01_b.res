@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/bradeneliason.github.io/bradeneliason.github.io/__site/assets/blog/beam_deflection_01/code/output/fig2a.png"

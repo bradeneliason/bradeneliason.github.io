@@ -1,2 +1,0 @@
-ArgumentError: Package Images not found in current path.
-- Run `import Pkg; Pkg.add("Images")` to install the Images package.

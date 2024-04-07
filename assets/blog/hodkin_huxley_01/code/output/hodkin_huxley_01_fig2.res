@@ -1,1 +1,1 @@
-nothing
+"/home/runner/work/bradeneliason.github.io/bradeneliason.github.io/__site/assets/blog/hodkin_huxley_01/code/output/fig2.png"
