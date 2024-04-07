@@ -1,0 +1,108 @@
+<!doctype html> <!-- Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes Free for personal and commercial use under the MIT license https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE --> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/katex/katex.min.css"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/minimal-mistakes.css"> <link rel=stylesheet  href="/css/adjust.css"> <link rel=stylesheet  href="../css/custom.css"> <link rel=icon  href="/assets/favicon.png"> <!--[if IE ]> <style> /* old IE unsupported flexbox fixes */ .greedy-nav .site-title { padding-right: 3em; } .greedy-nav button { position: absolute; top: 0; right: 0; height: 100%; } </style> <![endif]--> <title>Solving Beam Deflection</title> <body class=layout--single > <div class=masthead > <div class=masthead__inner-wrap > <div class=masthead__menu > <nav id=site-nav  class=greedy-nav > <a class=site-title  href="/">Braden Eliason</a> <ul class=visible-links > <li class=masthead__menu-item ><a href="/blog/" >Blog</a> <li class=masthead__menu-item ><a href="/resume/" >Résumé</a> </ul> <button class="greedy-nav__toggle hidden" type=button > <span class=visually-hidden >Toggle menu</span> <div class=navicon ></div> </button> <ul class="hidden-links hidden"></ul> </nav> </div> </div> </div> <div class=initial-content > <div id=main  role=main > <div class="sidebar sticky"> <div itemscope itemtype="https://schema.org/Person"> <div class=author__avatar > <img src="../assets/images/braden_eliason_circle.png" alt="Braden Eliason" itemprop=image > </div> <div class=author__content > <h3 class=author__name  itemprop=name >Braden Eliason</h3> <p class=author__bio  itemprop=description >engineer, inventor, designer, entrepreneur, and all-around nerd</p> </div> <div class=author__urls-wrapper > <button class="btn btn--inverse">Follow</button> <ul class="author__urls social-icons"> <li itemprop=homeLocation  itemscope itemtype="https://schema.org/Place"> <i class="fas fa-fw fa-map-marker-alt" aria-hidden=true ></i> <span itemprop=name >Munich, Germany</span> <li><a href="https://github.com/bradeneliason" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a> <li><a href="https://www.linkedin.com/in/bradeneliason/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden=true ></i> LinkedIn</a> </ul> </div> </div> </div> <div class=franklin-content > <div class=page-header > <h1>Solving Beam Deflection</h1> <div class=subheader ><span class=post-date >March 16, 2021</span> <div class=tags ><a href="/blog/#articles_by_tag/" id=tag-icon ><svg width=15  height=15  viewBox="0 0 512 512"><defs><style>.cls-1{fill:#141f38}</style></defs><path d="M 48.284271,8.2842712 A 40,40 0 0 0 8.2842712,48.284271 V 192.28427 A 96.568542,96.568542 0 0 0 36.569427,260.56943 L 267.99911,491.99911 a 40,40 0 0 0 56.57032,0 L 491.99911,324.56943 a 40,40 0 0 0 0,-56.57032 L 260.56943,36.569427 A 96.568542,96.568542 0 0 0 192.28427,8.2842712 Z M 136.28427,104.28427 a 32,32 0 0 1 32,32 32,32 0 0 1 -32,32 32,32 0 0 1 -32,-32 32,32 0 0 1 32,-32 z" /></svg></a><a href="/tag/engineering/">engineering</a>, <a href="/tag/julia/">julia</a></div></div></div> <p>This started as a challenge on the Julia Discourse website to come up with a compelling application for Julia in seven lines of code. I had wanted a reason to learn more about the package and took this as a fun opportunity.</p> <h2 id=the_problem ><a href="#the_problem" class=header-anchor >The Problem</a></h2> <p> is well suited to finding the solutions of ordinary differential equations &#40;ODEs&#41; with boundary conditions. One application for this is solving beam deflection under various loading conditions. As a test case, here&#39;s a simple beam deflection problem: a cantilevered beam with uniform loading. The beam has length, L, and it&#39;s stiffness is determined by both the elastic modulus, E, and the moment of inertia, I.</p> <h2 id=my_seven_lines_excluding_imports ><a href="#my_seven_lines_excluding_imports" class=header-anchor >My Seven Lines &#40;excluding imports&#41;</a></h2> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> ApproxFun, Plots
+L, E, I = <span class=hljs-number >12.0</span>, <span class=hljs-number >1.0</span>, <span class=hljs-number >1.0</span>
+d = <span class=hljs-number >0.</span>.L
+z = Fun(identity, d)
+B = [[Evaluation(d,<span class=hljs-number >0</span>,k) <span class=hljs-keyword >for</span> k=<span class=hljs-number >0</span>:<span class=hljs-number >1</span>]... ; [Evaluation(d,L,k) <span class=hljs-keyword >for</span> k=<span class=hljs-number >2</span>:<span class=hljs-number >3</span>]... ;]
+v = [B; E*I*Derivative()^<span class=hljs-number >4</span>] \ [ zeros(<span class=hljs-number >4</span>)...; one(z)]
+func_name = zip([v, v&#x27;, v&#x27;&#x27;, v<span class=hljs-string >&#x27;&#x27;&#x27;</span>], [<span class=hljs-string >&quot;Deflection&quot;</span>, <span class=hljs-string >&quot;Angle&quot;</span>, <span class=hljs-string >&quot;Momement&quot;</span>, <span class=hljs-string >&quot;Shear&quot;</span>])
+plot([plot(z, f, title=n, label=<span class=hljs-string >&quot;&quot;</span>) <span class=hljs-keyword >for</span> (f,n) <span class=hljs-keyword >in</span> func_name]..., lw=<span class=hljs-number >3</span>)</code></pre> <h2 id=what_its_doing ><a href="#what_its_doing" class=header-anchor >What It&#39;s Doing</a></h2> <p>The seven lines are bit compressed to fit within the constraints of the challenge so let&#39;s walk through it.</p> <p>These four lines are the simplest. The first line imports the required packages: <code>ApproxFun</code>, <code>Plots</code>. Next we define variables for the length, elastic modulus, and moment of inertia for the beam. The variable, d, is the domain of the ODE, in this case from <code>0</code> to <code>L</code>. The last line in this group creates an <code>ApproxFun</code> function called <code>z</code> across the domain. This function is simply the distance along the beam.</p> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> ApproxFun, Plots
+L, E, I = <span class=hljs-number >12.0</span>, <span class=hljs-number >1.0</span>, <span class=hljs-number >1.0</span>
+d = <span class=hljs-number >0.</span>.L
+z = Fun(identity, d)</code></pre> <p><code>B</code> is an array of boundary conditions for our ODE. It&#39;s a fourth order ODE, so there are four boundary conditions. The vertical displacement and first derivative &#40;ie, angle&#41; are both zero at the fixed end of the beam. The moment and shear in the beam &#40;2nd and 3rd&#41; derivatives are zero at the free end of the beam.</p> <pre><code class="julia hljs">B = [[Evaluation(d,<span class=hljs-number >0</span>,k) <span class=hljs-keyword >for</span> k=<span class=hljs-number >0</span>:<span class=hljs-number >1</span>]... ; 
+     [Evaluation(d,L,k) <span class=hljs-keyword >for</span> k=<span class=hljs-number >2</span>:<span class=hljs-number >3</span>]... ;]</code></pre> <p>The solution is generated on the next line. The boundary conditions, B, are all set to 0 using <code>zeros&#40;4&#41;...</code>. The differential equation for a beam is defined &#40;<code>E*I*Derivative&#40;&#41;^4</code>&#41; and gets set to a uniform load <code>one&#40;z&#41;</code> &#40;shown as <strong>q</strong> in the image above&#41;.</p> <pre><code class="julia hljs">v = [B; E*I*Derivative()^<span class=hljs-number >4</span>] \ [ zeros(<span class=hljs-number >4</span>)..., one(z)]</code></pre>
+<p>These two lines plot the results. I&#39;ve zipped together the solution and it&#39;s derivatives with their corresponding labels. The last line uses list comprehension to plot the results. Note: I wouldn&#39;t typically use syntax like this for plotting but I had to fit this whole thing into seven lines. A little bit of clarity went out the window.</p>
+<pre><code class="julia hljs">func_name = zip([v, v&#x27;, v&#x27;&#x27;, v<span class=hljs-string >&#x27;&#x27;&#x27;</span>], [<span class=hljs-string >&quot;Deflection&quot;</span>, <span class=hljs-string >&quot;Angle&quot;</span>, <span class=hljs-string >&quot;Momement&quot;</span>, <span class=hljs-string >&quot;Shear&quot;</span>])
+plot([plot(z, f, title=n, label=<span class=hljs-string >&quot;&quot;</span>) <span class=hljs-keyword >for</span> (f,n) <span class=hljs-keyword >in</span> func_name]..., lw=<span class=hljs-number >3</span>)</code></pre>
+<h2 id=beam_deflection_-_more_breathing_room ><a href="#beam_deflection_-_more_breathing_room" class=header-anchor >Beam Deflection - More Breathing Room</a></h2>
+<p>When not constrained to seven lines of code, it&#39;s much easier to document and read this Julia code. The code below show a 2 meter long beam with load which increases from 0 at the fixed end to 1 kN/m at the end of the beam. Here&#39;s a diagram of the problem setup.</p>
+
+<pre><code class="julia hljs"><span class=hljs-keyword >using</span> ApproxFun, Plots
+° = <span class=hljs-literal >π</span>/<span class=hljs-number >180</span>;
+
+<span class=hljs-comment ># Setting up problem</span>
+L = <span class=hljs-number >2.0</span>                 <span class=hljs-comment ># Length in m</span>
+E = <span class=hljs-number >82.74e9</span>             <span class=hljs-comment ># Elasticin Pa</span>
+I = <span class=hljs-number >444.0</span> * (<span class=hljs-number >0.01</span>)^<span class=hljs-number >4</span>    <span class=hljs-comment ># Moment of interia m⁴</span>
+d = <span class=hljs-number >0.</span>.L                <span class=hljs-comment ># Domain of beam</span>
+z = Fun(identity, d)    <span class=hljs-comment ># Length along beam in m</span>
+D = Derivative()
+
+<span class=hljs-comment ># Problem Definition</span>
+q = <span class=hljs-number >1000</span>*(z/L)          <span class=hljs-comment ># Triangular loading in N/m</span>
+w = E*I*D^<span class=hljs-number >4</span>             <span class=hljs-comment ># DiffEq for beam deflection</span>
+
+<span class=hljs-comment ># Boundary Conditions</span>
+B= [Evaluation(d, <span class=hljs-number >0</span>, <span class=hljs-number >0</span>) <span class=hljs-comment ># Beam vertically constrained at z = 0</span>
+    Evaluation(d, <span class=hljs-number >0</span>, <span class=hljs-number >1</span>) <span class=hljs-comment ># Beam&#x27;s angle is constrained at z = 0</span>
+    Evaluation(d, L, <span class=hljs-number >2</span>) <span class=hljs-comment ># Beam&#x27;s moment is 0 at z = L</span>
+    Evaluation(d, L, <span class=hljs-number >3</span>)]<span class=hljs-comment ># Beam&#x27;s shear is 0 at z = L</span>
+
+<span class=hljs-comment ># Solving for vertical displacement</span>
+v = [B; w] \ [ zeros(<span class=hljs-number >4</span>)...; -q]
+
+<span class=hljs-comment ># Renaming and scaling variables</span>
+θ, M, V = (v&#x27;/°),(v&#x27;&#x27;*E*I), (v<span class=hljs-string >&#x27;&#x27;&#x27;</span>*E*I)
+
+<span class=hljs-comment ># Plotting</span>
+p1 = plot(z, <span class=hljs-number >1000</span>v, legend=:none, 
+    title=<span class=hljs-string >&quot;Deflection [mm]&quot;</span>, lc=:blue)
+p2 = plot(z, θ, legend=:none, 
+    title=<span class=hljs-string >&quot;Angle [°]&quot;</span>, lc=:orange)
+
+plot(z, M/<span class=hljs-number >1000</span>, label=<span class=hljs-string >&quot;Momement [kN⋅m]&quot;</span>,
+    fill = (<span class=hljs-number >0</span>, <span class=hljs-number >0.15</span>, :blue),  lc=:blue)
+plot!(z, V/<span class=hljs-number >1000</span>, label=<span class=hljs-string >&quot;Shear [kN]&quot;</span>,
+    fill = (<span class=hljs-number >0</span>, <span class=hljs-number >0.15</span>, :green), lc=:green)
+p3 = plot!(z, q/<span class=hljs-number >1000</span>, label=<span class=hljs-string >&quot;Load [kN/m]&quot;</span>, 
+    fill = (<span class=hljs-number >0</span>, <span class=hljs-number >0.15</span>, :red),   lc=:red,
+    legend=:bottomright)
+
+l = grid(<span class=hljs-number >3</span>, <span class=hljs-number >1</span>, heights=[<span class=hljs-number >0.2</span>, <span class=hljs-number >0.2</span> ,<span class=hljs-number >0.6</span>])
+plot(p1, p2, p3, layout=l,  lw = <span class=hljs-number >3</span>, 
+    size=(<span class=hljs-number >500</span>, <span class=hljs-number >900</span>), frame=:zerolines)</code></pre>
+
+<h2 id=next_steps ><a href="#next_steps" class=header-anchor >Next Steps</a></h2>
+<ul>
+<li><p>I would like to play around with more supporting and loading conditions. In particular, I want to figure out how to have a support in the middle of the beam. I believe I need to solve this problem piecewise when there are supports in the middle of the beam.</p>
+
+<li><p>I want to see if ApproxFun can solve some more complicated examples. It should be able to solve the 2D version of this problem - plate deflection.</p>
+
+<li><p>Adding  or  should allow me to calculate beam deflections with units and error propagation.</p>
+
+</ul>
+<div class=page-foot >
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Braden Eliason. Last modified: April 07, 2024.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div>
+
+      </div> 
+    </div>   
+
+    <div class=page__footer >
+      <footer>
+        
+        
+        <div class=page__footer-follow >
+          <ul class=social-icons >
+            <li><strong>Follow:</strong>
+            <li><a href="https://twitter.com/mmistakes" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden=true ></i> Twitter</a>
+            <li><a href="https://github.com/mmistakes" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a>
+          </ul>
+        </div>
+        <div class=page__footer-copyright >&copy; Braden Eliason. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel=nofollow >Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/libs/minimal-mistakes/main.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin=anonymous ></script>
+
+    
+        
+
+
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
