@@ -12,118 +12,107 @@ tags = ["syntax", "code", "image"]
 
 \toc
 
-## More markdown support
+## Experience
 
-The Julia Markdown parser in Julia's stdlib is not exactly complete and Franklin strives to bring useful extensions that are either defined in standard specs such as Common Mark or that just seem like useful extensions.
+@@timeline
 
-* indirect references for instance [like so]
+@@timeline-element
+   {{resume_title "Senior Product Owner" 2022 Present}}
+   {{resume_subtitle "iThera Medical" "Munich, Germany")}}
+@@
 
-[like so]: http://existentialcomics.com/
+@@timeline-element
+   {{resume_title "Owner" 2021 2022}}
+   {{resume_subtitle "Journeywork Product Design" "Minneapolis, MN")}}
+   Journeywork Product Design is a design consultancy helping medical device companies launch new products. We help our clients find new medical device markets, research the market need, develop new products, craft regulatory/reimbursement strategies, develop prototypes, and much more.
+@@
 
-or also for images
+@@timeline-element
+   {{resume_title "Innovation Fellow " 2020 2021}}
+   {{resume_subtitle "Bakken Medical Devices Center, University of Minnesota" "Minneapolis, MN")}}
 
-![][some image]
+ * Identified unmet medical needs through healthcare utilization and voice of customer (VOC) research
+ * Conducted over 50 interviews with customers to refine value proposition design
+ * Led brainstorming to generate new solutions to treat unmet medical need guided by VOC input
+ * Crafted grants, intellectual property disclosures, study protocols, and prototypes
+@@
+  
+@@timeline-element
+  {{resume_title "Cheif Technology Officer" 2017 2020}}
+  {{resume_subtitle "CranioVation (now Alpheus Medical)" "Oakdale, MN")}}
+  
+* Designed and executed product development strategy, including regulatory and intellectual property strategy
+* Invented non-invasive modality for treating aggressive cancers
+* Design and conduct in vitro experiments
+* Engineer in vitro and in vivo experimental apparatus
+* Manage a team of experts to simulate novel medical device with finite element analysis
+@@
 
-some people find that useful as it allows referring multiple times to the same link for instance.
+@@timeline-element
+  {{resume_title "Biomedical Engineer" 2015 2017}}
+  {{resume_subtitle "Kablooē Design" "Coon Rapids, MN")}}
 
-[some image]: https://upload.wikimedia.org/wikipedia/commons/9/90/Krul.svg
+* Orchestrated user research, including contextual inquiries, design ethnographies, and formative usability studies
+* Led interaction design and prototyping through a user-centric approach
+* Designed and prototyped early medical device systems
+* Developed and executed early feasibility experiments
+@@
 
-* un-qualified code blocks are allowed and are julia by default, indented code blocks are not supported by default (and there support will disappear completely in later version)
+@@timeline-element
+  {{resume_title "Co-founder and CTO" 2014 Present}}
+  {{resume_subtitle "MechanismsMarket.com" "St. Paul, MN")}}
 
-```
-a = 1
-b = a+1
-```
+* Developed sales and growth strategies by expanding store service and product offerings
+* Designed and developed the e-commerce store
+@@
 
-you can specify the default language with `@def lang = "julia"`.
-If you actually want a "plain" code block, qualify it as `plaintext` like
+@@
 
-```plaintext
-so this is plain-text stuff.
-```
+## Education
+@@timeline
+@@timeline-element
+  {{resume_title "Biomedical Engineering, BS" 2009 2013}}
+  {{resume_subtitle "Washington University in St. Louis" "St. Louis, MO")}}
 
-## A bit more highlighting
+ * *Alpha Eta Mu Beta* - biomedical engineering honor society
+ * *Tau Beta Pi* - engineering honor society
 
-Extension of highlighting for `pkg` an `shell` mode in Julia:
+@@
+@@
 
-```julia-repl
-(v1.4) pkg> add Franklin
-shell> blah
-julia> 1+1
-(Sandbox) pkg> resolve
-```
+## Skills
+ * Voice of customer research
+ * Value proposition design
+ * Leading ideation
+ * Project communication
+ * Experiment design
+ * SolidWorks, OnShape
+ * Rapid prototyping
+ * Product testing
+ * Troubleshooting
+ * System modeling
 
-you can tune the colouring in the CSS etc via the following classes:
+## Patents & Applications
 
-* `.hljs-meta` (for `julia>`)
-* `.hljs-metas` (for `shell>`)
-* `.hljs-metap` (for `...pkg>`)
+ 1. Basket for a multi-electrode array catheter - *(US9474486)*
+ 1. Active detection of sensor transition from covered to exposed - *(US9724014)*
+ 1. Laplacian and Tikhonov regularization for voltage mapping with a medical device - *(US10049771)*
+ 1. Spirometer system and methods of data analysis - *(US9706946)*
+ 1. Weight-based dosing syringe - *(US2017/0095615)*
+ 1. Biomaterial collection apparatus and assemblies - *(US2019/0046164)*
+ 1. Methods and apparatus for guiding medical care based on sensor data from the gastrointestinal tract - *(US2018/0078195)*
+ 1. Tissue treatment with sensitizer and light and/or sound - *(US2021/0236862)*
+ 1. Detachable magnet device - *(US2021/0265089A1)*
+ 1. Methods of treating tumors with pro drugs  - *(US2021/0369843)*
 
-## More customisation
 
-Franklin, by design, gives you a lot of flexibility to define how you want stuff be done, this includes doing your own parsing/processing and your own HTML generation using Julia code.
+  <!-- @@timeline-element
 
-In order to do this, you can define two types of functions in a `utils.jl` file which will complement your `config.md` file:
-
-* `hfun_*` allow you to plug custom-generated HTML somewhere
-* `lx_*` allow you to do custom parsing of markdown and generation of HTML
-
-The former (`hfun_*`) is most likely to be useful.
-
-### Custom "hfun"
-
-If you define a function `hfun_bar` in the `utils.jl` then you have access to a new template function `{{bar ...}}`. The parameters are passed as a list of strings, for instance variable names but it  could just be strings as well.
-
-For instance:
-
-```julia
-function hfun_bar(vname)
-  val = Meta.parse(vname[1])
-  return round(sqrt(val), digits=2)
-end
-```
-
-~~~
-.hf {background-color:black;color:white;font-weight:bold;}
-~~~
-
-Can be called with `{{bar 4}}`: **{{bar 4}}**.
-
-Usually you will want to pass variable name (either local or global) and collect their value via one of `locvar`, `globvar` or `pagevar` depending on your use case.
-Let's have another toy example:
-
-```julia
-function hfun_m1fill(vname)
-  var = vname[1]
-  return pagevar("menu1", var)
-end
-```
-
-Which you can use like this `{{m1fill title}}`: **{{m1fill title}}**. Of course  in this specific case you could also have used `{{fill title menu1}}`: **{{fill title menu1}}**.
-
-Of course these examples are not very useful, in practice you might want to use it to generate actual HTML in a specific way using Julia code.
-For instance you can use it to customise how [tag pages look like](/menu3/#customising_tag_pages).
-
-A nice example of what you can do is in the [SymbolicUtils.jl manual](https://juliasymbolics.github.io/SymbolicUtils.jl/api/) where they use a `hfun_` to generate HTML encapsulating the content of code docstrings, in a way doing something similar to what Documenter does. See [how they defined it](https://github.com/JuliaSymbolics/SymbolicUtils.jl/blob/website/utils.jl).
-
-**Note**: the  output **will not** be reprocessed by Franklin, if you want to generate markdown which should be processed by Franklin, then use `return fd2html(markdown, internal=true)` at the end.
-
-### Custom "lx"
-
-These commands will look the same as latex commands but what they do with their content is now entirely controlled by your code.
-You can use this to do your own parsing of specific chunks of your content if you so desire.
-
-The definition of `lx_*` commands **must** look like this:
-
-```julia
-function lx_baz(com, _)
-  # keep this first line
-  brace_content = Franklin.content(com.braces[1]) # input string
-  # do whatever you want here
-  return uppercase(brace_content)
-end
-```
-
-You can call the above with `\baz{some string}`: \baz{some string}.
-
-**Note**: the output **will be** reprocessed by Franklin, if you want to avoid this, then escape the output by using `return "~~~" * s * "~~~"` and it will be plugged  in as is in the HTML.
+    @@resume-title
+        @@resume-pos Co-founder and CTO @@
+        @@resume-date 2014 - Present @@
+    @@
+    @@resume-subtitle
+        @@resume-org  [MechanismsMarket.com](MechanismsMarket.com) @@
+        @@resume-loc  St. Paul, MN @@
+    @@ -->

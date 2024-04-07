@@ -14,3 +14,31 @@ function lx_baz(com, _)
   # do whatever you want here
   return uppercase(brace_content)
 end
+
+
+################################################################################
+##
+#                               Resume
+#
+################################################################################
+
+function hfun_resume_title(varargs)
+  position = string(varargs[1])
+  date1 = string(varargs[2])
+  date2 = string(varargs[3])
+
+  io = IOBuffer()
+  write(io, """<div class="resume-title"><div class="resume-pos">$position</div>""")
+  write(io, """<div class="resume-date">$date1 - $date2</div></div>""")
+  return String(take!(io))
+end
+
+function hfun_resume_subtitle(varargs)
+  org = string(varargs[1])
+  place = string(varargs[2])
+
+  io = IOBuffer()
+  write(io, """<div class="resume-subtitle"><div class="resume-org">$org</div>""")
+  write(io, """<div class="resume-loc">$place</div></div>""")
+  return String(take!(io))
+end

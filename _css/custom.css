@@ -1,0 +1,245 @@
+html {
+    background-color: #f2f3f3;
+}
+
+/* ==================================================================
+    Font Awesome Icons
+================================================================== */
+
+.fa-fw {
+    color: black
+}
+
+.language-julia.hljs {
+    font-family: JuliaMono;
+}
+
+/* ==================================================================
+    Post Header
+================================================================== */
+
+.post-list > li > .post-title {
+    vertical-align: middle;
+}
+
+.post-list > li > .post-date {
+    color: #8e8e8e;
+    vertical-align: middle;
+    font-size: small;
+    padding-left: 1em;
+    float: right;
+}
+
+div.page-header {
+    margin-bottom: 24px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 36px
+}
+
+div.page-header > h1 {
+    margin: 0px;
+}
+
+div.page-header > span.post-date {
+    color: #8e8e8e;
+    font-size: medium;
+}
+
+.subheader > div.tags {
+    color: #8e8e8e;
+    float: right;
+}
+
+#tag-icon {
+    fill: #8e8e8e;
+    padding-right: 5px;
+    /* vertical-align: text-top; */
+}
+
+.page-header > .subheader > * {
+    font-size: medium;
+    display: inline;
+}
+
+/* ==================================================================
+    Resume
+================================================================== */
+
+.resume-subtitle {
+    color: #8e8e8e;
+    font-style: italic;
+    font-size: medium;
+}
+
+.resume-pos {
+    float: left;
+    display: contents;
+    font-weight: bold;
+}
+
+.resume-date{
+    float: right;
+    font-size: medium;
+}
+
+.resume-org {
+    float: left;
+    display: contents;
+}
+
+.resume-loc {
+    float: right;
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #ececec;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    margin-left: 0px;
+    border-radius: 3px;
+}
+
+.timeline-element {
+    margin: 0;
+    padding: 0 0 0 20px;
+    position: relative;
+}
+
+.timeline-element::after {
+    position: absolute;
+    content: '';
+    top: 10px;
+    left: 1px;
+    width: 5px;
+    height: 5px;
+    border: 4px solid #ececec;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+@media (max-width: 64em) {
+    .resume-loc { 
+        float: left !important; 
+        display: contents;
+    }
+    .resume-loc::before {
+        content: "\A  ";
+        white-space: pre-line;
+    }
+  }
+
+/* ==================================================================
+    Figures
+================================================================== */
+
+figure {
+    margin: 0;
+    display: block;
+}
+
+figcaption {
+    text-align: center;
+}
+
+.fig-num {
+    font-weight: bold;
+    font-style: italic;
+    padding-right: 0.5em;
+  }
+
+
+
+/* ==================================================================
+    Image Slider
+================================================================== */
+
+.slider {
+  background-color: #ddd;
+  /* height: 500px; */
+  position: relative;
+  padding: 0;
+  border-radius: 25px;
+}
+
+/* Slides */
+
+.slider li {
+    list-style: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+  }
+  
+.slider input {
+  display: none;
+}
+
+.slider img {
+  opacity: 0;
+  transition: .25s;
+  width: auto;
+  border-radius: 25px;
+  padding: 10px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.slider li input:checked~img {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+
+}
+
+/* Navigation */
+
+.slider label {
+  width: .75em;
+  height: .75em;
+  background-color: #ddd;
+  border: .1em solid white;
+  position: absolute;
+  top: 1.5em;
+  border-radius: 100%;
+  cursor: pointer;
+  opacity: 1.0;
+  transition: .1s;
+  visibility: hidden;
+  z-index: 20;
+}
+
+.slider:hover label {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slider input:checked+label {
+  background-color: #1B5D9A;
+  box-shadow: 0px 0px 5px #fff;
+}
+
+/* ==================================================================
+    Figure Grid
+================================================================== */
+
+.figgrid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.figgrid img {
+    width: 100%;
+}
