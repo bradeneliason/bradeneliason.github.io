@@ -578,7 +578,7 @@ audio:not([controls]) {
 }
 
 a {
-  color: #32859e;
+  color: #1B5D9A;
 }
 
 a:hover,
@@ -682,6 +682,13 @@ body {
   color: #494e52;
   font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
   line-height: 1.5;
+  /* background-image: url("../assets/images/tiny_grid.png"); */
+  /* background-image: url("../assets/images/cartographer_light.png"); */
+  background-image: url("../assets/images/cartographer_light_blu1.png");
+  background-position: left top;
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 body.overflow--hidden {
@@ -696,7 +703,7 @@ h5,
 h6 {
   margin: 2em 0 0.5em;
   line-height: 1.2;
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  font-family: JuliaMono, -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
   font-weight: bold;
 }
 
@@ -787,11 +794,11 @@ blockquote cite::before {
 }
 
 a:visited {
-  color: #5197ad;
+  color: #5181ad;
 }
 
 a:hover {
-  color: #266477;
+  color: #265077;
   outline: 0;
 }
 
@@ -1868,19 +1875,20 @@ th {
 
 .masthead {
   position: relative;
-  border-bottom: 1px solid #f2f3f3;
+  border-bottom: 3px solid #1B5D9A;
   -webkit-animation: intro 0.3s both;
   animation: intro 0.3s both;
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
   z-index: 20;
+  background: white;
 }
 
 .masthead__inner-wrap {
   clear: both;
   margin-left: auto;
   margin-right: auto;
-  padding: 1em;
+  padding: 0em 1em;
   max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1888,7 +1896,8 @@ th {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; */
+  font-family: JuliaMono;
 }
 
 .masthead__inner-wrap::after {
@@ -2197,13 +2206,18 @@ th {
   position: relative;
 }
 
+.greedy-nav .visible-links a:hover {
+  color: #1B5D9A;
+  font-weight: bold;
+}
+
 .greedy-nav .visible-links a::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   height: 4px;
-  background: #6f777d;
+  background: white;
   width: 100%;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -2215,6 +2229,7 @@ th {
   -webkit-transform: scaleX(1);
   -ms-transform: scaleX(1);
   transform: scaleX(1);
+  background: #1B5D9A;
 }
 
 .greedy-nav .hidden-links {
@@ -2539,6 +2554,7 @@ th {
   -webkit-animation-delay: 0.45s;
   animation-delay: 0.45s;
   background-color: #f2f3f3;
+  border-bottom: 12px solid #1B5D9A;
 }
 
 .page__footer::after {
@@ -3219,13 +3235,13 @@ body:hover .visually-hidden button {
   vertical-align: middle;
 }
 
+/* remove custom colors from social icons 02/24/22 2:12 PM
 .social-icons .fas,
 .social-icons .fab,
 .social-icons .far,
 .social-icons .fal {
   color: #494e52;
 }
-
 .social-icons .fa-behance,
 .social-icons .fa-behance-square {
   color: #1769ff;
@@ -3334,7 +3350,7 @@ body:hover .visually-hidden button {
 .social-icons .fa-xing,
 .social-icons .fa-xing-square {
   color: #006567;
-}
+} */
 
 .navicon {
   position: relative;
@@ -3549,6 +3565,8 @@ a.reversefootnote:hover {
   max-width: 100%;
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
+  background: white;
+  border-radius: 25px 25px 0 0;
 }
 
 #main::after {
@@ -4528,6 +4546,8 @@ a.reversefootnote:hover {
     z-index: 10;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    margin: auto;
+    width: 75%;
   }
 }
 
@@ -4559,6 +4579,7 @@ a.reversefootnote:hover {
 .sidebar > * {
   margin-top: 1em;
   margin-bottom: 1em;
+  padding-top: 1em;
 }
 
 .sidebar h2,
