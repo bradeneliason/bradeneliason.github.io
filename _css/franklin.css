@@ -242,8 +242,11 @@ td {
 
 .franklin-content img {
   width: 70%;
-  text-align: center;
-  padding-left: 10%;
+  /* text-align: center; */
+  /* padding-left: 10%; */
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .franklin-content .img-small img {
@@ -308,10 +311,15 @@ code {
   border-radius: 10px;
 }
 
-.hljs-meta { font-weight: bold;}
+.hljs-meta,
+.hljs-metas,
+.hljs-metap { font-weight: bold; }
 
-.hljs-meta.shell_ {color: crimson;}
-.hljs-meta.prompt_ {color: rgb(25, 179, 51);}
+.hljs-meta { color: rgb(25, 179, 51); }
+
+.hljs-metas { color: red; }
+
+.hljs-metap { color: rgb(51, 131, 231); }
 
 .code-output {
   background: var(--output-background);

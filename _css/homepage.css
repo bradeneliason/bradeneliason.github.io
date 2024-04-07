@@ -1,0 +1,141 @@
+/* ==================================================================
+    Cover
+================================================================== */
+
+.cover-container {
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    line-height: 1.35em;
+    /* background: rgb(0,69,117); */
+    /* background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); */
+    background-image: url("../assets/images/cartographer.png");
+    /* background-image: url("../assets/images/tiny_grid.png"); */
+    background-position: left top;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 240px;
+    border-radius: 50%;
+    fill: white;
+}
+
+.cover h1 {
+    font-size: 75px;
+    font-family: JuliaMono;
+    font-weight: lighter;
+    line-height: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 0em;
+    margin-top: 0.5em;
+    margin-bottom: auto;
+    text-align: center;
+    color: white;
+}
+
+.cover a {
+    transition: color 0.5s ease;
+}
+
+@media (max-width: 900px) {
+    .cover h1 {
+        font-size: 45px;
+        margin-bottom: revert;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+/* ==================================================================
+    Social
+================================================================== */
+
+.social-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 1em;
+}
+
+.social-icon {
+    text-align: center;
+    padding: 0.1em 1em;
+    font-size: xxx-large;
+    color: white;
+}
+
+.social-icon a {
+    color: var(--color-cyan);
+    transition: color 0.5s ease;
+    text-decoration: none;
+}
+
+.social-icon a:hover {
+    var(--color-yellow);
+}
+
+.social-icon > * > h2 {
+    font-size: 30px;
+    font-family: JuliaMono;
+    color: white;
+    /* color: #B0ade1; */
+    margin: 20px auto;
+}
+
+.social-icon svg {
+    margin: 20px;
+}
+
+@media (max-width: 900px) {
+    .social-container {
+        display: contents;
+        padding: 0em 0.125em;
+    }
+}
+
+@media (max-width: 900px) {
+    .social-icon > * > h2 {
+        display: none;
+    }
+    .logo {
+        max-width: 150px;
+    }
+    .logo > svg {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+
+/* ==================================================================
+    Animated Links
+================================================================== */
+
+
+a::after {
+    content: "";
+    display: block;
+    height: 4px;
+    background: white;
+    width: 60px;
+    margin: 0 auto;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: scaleX(0) translate3d(0, 0, 0);
+    transform: scaleX(0) translate3d(0, 0, 0);
+}
+
+a:hover::after {
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+}
