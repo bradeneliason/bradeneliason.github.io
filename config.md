@@ -2,7 +2,7 @@
 Add here global page variables to use throughout your website.
 -->
 +++
-author = "Septimia Zenobia"
+author = "Braden Eliason"
 mintoclevel = 2
 
 # uncomment and adjust the following line if the expected base URL of your website is something like [www.thebase.com/yourproject/]
@@ -17,11 +17,9 @@ ignore = ["node_modules/"]
 
 # RSS (the website_{title, descr, url} must be defined to get RSS)
 generate_rss = true
-website_title = "Franklin Template"
-website_descr = "Example website using Franklin"
-website_url   = "https://tlienart.github.io/FranklinTemplates.jl/"
-prepath     = get(ENV, "PREVIEW_FRANKLIN_PREPATH", "") # In the third argument put the prepath you normally use
-website_url = get(ENV, "PREVIEW_FRANKLIN_WEBSITE_URL", "bradeneliason.github.io") # Just put the website name
+website_title = "Braden Eliason"
+website_descr = "Braden Eliason's personal blog"
+website_url   = "https://bradeneliason.github.io/"
 +++
 
 <!--
