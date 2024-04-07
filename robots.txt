@@ -1,4 +1,4 @@
-Sitemap: bradeneliason.github.io/sitemap.xml
+Sitemap: https://bradeneliason.github.io/sitemap.xml
 
 User-agent: *
 Disallow:
