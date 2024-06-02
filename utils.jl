@@ -29,25 +29,6 @@ function page_tag_list()
   return tags
 end
 
-function hfun_bar(vname)
-  val = Meta.parse(vname[1])
-  return round(sqrt(val), digits=2)
-end
-
-function hfun_m1fill(vname)
-  var = vname[1]
-  return pagevar("index", var)
-end
-
-function lx_baz(com, _)
-  # keep this first line
-  brace_content = Franklin.content(com.braces[1]) # input string
-  # do whatever you want here
-  return uppercase(brace_content)
-end
-
-
-
 ################################################################################
 ##
 #                               Resume
@@ -271,64 +252,17 @@ Converts a blog file name ending with md into a
 """
 mdfile_to_rpath(mdfile) = ".\\blog\\" * splitext(mdfile)[1]
 
-function post_list_from_paths(io, paths)
-  write(io, """<ul class="post-list">""")
-  for p in paths
-      date = get_date(p)
-      date_str = Dates.format.(date, "u-Y")
-      title = string(pagevar(p, "title"))
-      link = "./" * split(p, "\\")[end] * "/" * "index.html"
-      write(io, """<li><a class="post-title" href="$link">$title</a><span class="post-date">$date_str</span></li>\n""")
-  end
-  write(io, "</ul>")
-  return io
-end
-
-# """
-# Lists recent blog posts
-# TODO: list just the top N posts?
-# """
-# function hfun_recentblogposts()
-#   # Get all the md files in the blog directory and sorts them by date
-#   list = readdir("blog")
-#   filter!(f -> endswith(f, ".md"), list)
-#   list = mdfile_to_rpath.(list)
-#   sort!(list, by=get_date, rev=true)
-
-#   # Generates the list of posts
-#   io = IOBuffer()
-#   post_list_from_paths(io, list)
-#   return String(take!(io))
-# end
-
-# """
-# Lists all blog posts
-# TODO: add pagination
-# TODO: add optional images
-# """
-# function hfun_allblogposts()::String
-#   c = IOBuffer()
-
-#   mdfilelist = readdir("blog")
-#   rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
-#   write(c, """<ul class="post-list">""")
-
-#   for rpath in rpaths
-#       title = pagevar(rpath, "title")
-#       date = get_date(rpath)
-#       if isnothing(title)
-#           title = "/$rpath/"
-#       end
-
-#       date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
-
-#       url = get_url(rpath)
-#       # write(c, "<li><a href=\"$url\">$title</a></li>")
-#       write(c, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
+# function post_list_from_paths(io, paths)
+#   write(io, """<ul class="post-list">""")
+#   for p in paths
+#       date = get_date(p)
+#       date_str = Dates.format.(date, "u-Y")
+#       title = string(pagevar(p, "title"))
+#       link = "./" * split(p, "\\")[end] * "/" * "index.html"
+#       write(io, """<li><a class="post-title" href="$link">$title</a><span class="post-date">$date_str</span></li>\n""")
 #   end
-
-#   write(c, "</ul>")
-#   return String(take!(c))
+#   write(io, "</ul>")
+#   return io
 # end
 
 """
@@ -391,8 +325,6 @@ end
   write(io, "</ul>")
   return String(take!(io))
 end
-
-
 
 ################################################################################
 ##
