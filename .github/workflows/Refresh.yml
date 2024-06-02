@@ -2,8 +2,8 @@
 name: Refresh
 
 on:
-  schedule:
-    - cron:  '0 3 * * *' # Runs every day at 3am
+  # schedule:
+    # - cron:  '0 3 * * *' # Runs every day at 3am
   workflow_dispatch:
 jobs:
   refresh:
