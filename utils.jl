@@ -280,6 +280,10 @@ TODO: add desc
   postlist = []
   for rpath in rpaths
     title = pagevar(rpath, "title")
+    if isnothing(title)
+      title = titlecase(replace(last(split(rpath, "\\")), "_" => " "))
+      @warn "Title at $rpath is nothing. Resorting to default title: $title"
+    end
     date = get_date(rpath)
     date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
     url = get_url(rpath)
