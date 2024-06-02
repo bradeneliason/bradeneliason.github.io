@@ -227,18 +227,6 @@ end
 #   return String(take!(io))
 # end
 
-# """
-# Goes on pages like `/tag/3d_printing/`. Not to be used in other pages.
-# """
-# function hfun_custom_taglist()::String
-#   tag = locvar(:fd_tag)
-#   rpaths = globvar("fd_tag_pages")[tag]
-#   sort!(rpaths, by=get_date, rev=true)
-
-#   io = IOBuffer()
-#   post_list_from_paths(io, rpaths)
-#   return String(take!(io))
-# end
 
 
 ################################################################################
@@ -252,18 +240,7 @@ Converts a blog file name ending with md into a
 """
 mdfile_to_rpath(mdfile) = ".\\blog\\" * splitext(mdfile)[1]
 
-# function post_list_from_paths(io, paths)
-#   write(io, """<ul class="post-list">""")
-#   for p in paths
-#       date = get_date(p)
-#       date_str = Dates.format.(date, "u-Y")
-#       title = string(pagevar(p, "title"))
-#       link = "./" * split(p, "\\")[end] * "/" * "index.html"
-#       write(io, """<li><a class="post-title" href="$link">$title</a><span class="post-date">$date_str</span></li>\n""")
-#   end
-#   write(io, "</ul>")
-#   return io
-# end
+
 
 """
 Lists all blog posts
@@ -329,6 +306,33 @@ end
   write(io, "</ul>")
   return String(take!(io))
 end
+
+"""
+Goes on pages like `/tag/3d_printing/`. Not to be used in other pages.
+"""
+function hfun_custom_taglist()::String
+  tag = locvar(:fd_tag)
+  rpaths = globvar("fd_tag_pages")[tag]
+  sort!(rpaths, by=get_date, rev=true)
+
+  io = IOBuffer()
+  post_list_from_paths(io, rpaths)
+  return String(take!(io))
+end
+
+function post_list_from_paths(io, paths)
+  write(io, """<ul class="post-list">""")
+  for p in paths
+      date = get_date(p)
+      date_str = Dates.format.(date, "u-Y")
+      title = string(pagevar(p, "title"))
+      link = "./" * split(p, "\\")[end] * "/" * "index.html"
+      write(io, """<li><a class="post-title" href="$link">$title</a><span class="post-date">$date_str</span></li>\n""")
+  end
+  write(io, "</ul>")
+  return io
+end
+
 
 ################################################################################
 ##
