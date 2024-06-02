@@ -332,7 +332,7 @@ function post_list_from_paths(io, paths)
       date_str = Dates.format.(date, "u-Y")
       title = string(pagevar(p, "title"))
       # link = "./" * split(p, "\\")[end] * "/" * "index.html"
-      url = get_url(rpath)
+      url = get_url(p)
       write(io, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
   end
   write(io, "</ul>")
