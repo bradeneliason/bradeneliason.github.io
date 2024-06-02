@@ -70,27 +70,35 @@ These processes are not terribly complicated for simple geometries, but the comp
 
 ## Measurements.jl
 
-```julia:./code/blender_dithering_01_ex1
+```julia
 using Measurements #hide
 a = 4.5 ± 0.1;
 b = 3.8 ± 0.4;
 @show 2a + b
 ```
 
-\output{./code/blender_dithering_01_ex1}
+```julia
+2a + b = 12.8 ± 0.45
+```
+<!-- TODO: -->
+<!-- \output{./code/blender_dithering_01_ex1} -->
 
 {{jlpkg Measurements.jl}} is a package in Julia that takes care of uncertainty propagation for you. Values with uncertainty can be specified with `±`, as we would hope. In this case, the `±` symbol is a custom infix operator that creates a new type called a Measurement. Through the unreasonable effectiveness of multiple dispatch, {{jlpkg Measurements.jl}} extends the basic operations of Julia, so all calculations done on a Measurement will look the same as if they were just a float. More details about {{jlpkg Measurements.jl}} can be found in the package documentation. Here is a basic example of how {{jlpkg Measurements.jl}} works:
 
 ## Tolerance Analysis with Measurements.jl
 
-```julia:./code/blender_dithering_01_ex2
+```julia
 using Measurements #hide
 dim1 = 40 ± 0.5;
 dim2 = 25 ± 0.1;
 @show dim1 + dim2
 ```
 
-\output{./code/blender_dithering_01_ex2}
+```julia
+dim1 + dim2 = 65.0 ± 0.51
+```
+<!-- TODO: -->
+<!-- \output{./code/blender_dithering_01_ex2} -->
 
 Consider our simple example above. The following code is able to replicate the statistical tolerance analysis method without the hassle. There's no special methods to call. The complexities of propagating uncertainty though addition are handled by extending the definition of addition to quantities with uncertainty. 
 
@@ -115,7 +123,7 @@ Ignore those equations. **There's an easier way.** Performing statistical tolera
 
 $$ F = \begin{bmatrix}0 \\44.95 \pm 0.05\end{bmatrix} $$
 
-```julia:./code/blender_dithering_01_ex3
+```julia
 using Pkg; Pkg.add("Measurements") #hide
 using Measurements, LinearAlgebra
 
@@ -143,7 +151,11 @@ Z = path1 - path2;
 
 Once all the vectors are defined, determining Z is easy. Z is just a vector derived from all the other dimension vectors. The length of Z can be found by taking its norm. The result is $160.26 \pm 0.24$.
 
-\output{./code/blender_dithering_01_ex3}
+```julia
+norm(Z) = 160.26 ± 0.24
+```
+<!-- TODO: -->
+<!-- \output{./code/blender_dithering_01_ex3} -->
 
 ## Wrapping Up
 

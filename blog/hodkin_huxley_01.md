@@ -44,7 +44,7 @@ $$ \frac{d h}{d t}=\alpha_h(1-h)-\beta_h h $$
 
 The Julia code below imports the necessary packages and defines functions for the transfer rate coefficients for n, m, and h. We also define the steady state values for each of these activation particles to help define our initial conditions. Finally we set a few constants that will be used throughout the script.
 
-```julia:./code/hodkin_huxley_01_ex1
+```julia
 using Plots, DifferentialEquations, LaTeXStrings
 
 ## Constants
@@ -86,7 +86,7 @@ $$ \frac{d V_m}{d t} = \frac{I_{inj}(t) + (V_{Na} - V_m)G_{Na} + (V_K - V_m)G_K 
 
 Julia is a very concise and high level language. As a result, it can often look like pseudocode. The differential equations defined above for the transfer rate coefficients and the membrane voltage can be seen directly in the HH_model function.
 
-```julia:./code/hodkin_huxley_01_ex2
+```julia
 # Injected Current Function
 I_inj(t) = 10 * (5 < t < 30)
 
@@ -116,7 +116,7 @@ prob = ODEProblem(HH_model, u0, tspan)
 sol = solve(prob, saveat=0.01);
 ```
 
-```julia:./code/hodkin_huxley_01_fig2
+```julia
 # Plotting
 p1 = plot(
     sol.t, sol[4,:], 

@@ -184,7 +184,7 @@ function hfun_postfig(varargs)
     end
     
   end
-  @warn "Figure $figure_num could not be found"
+  @warn "Figure $figure_num in $base_name could not be found"
   return ""
 end
 
@@ -213,29 +213,35 @@ function hfun_gallery(varargs)
   
   base_name = split(splitext(locvar("fd_rpath"))[1], "\\")[2]
 
-  img_list = readdir("./_assets/blog_images")
-  filter!(f -> occursin(base_name, f), img_list)
+  img_list = readdir("_assets/blog_images/")
+  # filter!(f -> occursin(base_name, f), img_list)
+  @show base_name
+  # @show img_list
   img_dict = Dict(n => first(filter(i -> occursin("fig$n", i), img_list)) for n in img_nums)
+  @show img_dict
   
   io = IOBuffer()
-  write(io, """<div class="slider">""")
-  write(io, """<ul class="slider" style="height: $(height)px;">""")
-  for (i,n) in enumerate(img_nums)
-    img_path = "/assets/blog_images/" * img_dict[n]
-    # @info img_path
-    slide_num_str = "slide$(n)"
-    write(io, "<li>")
-    # write(io, """<span class="helper"></span>""")
-    write(io, """<input type="radio" id="$slide_num_str" name="slide" checked>""")
-    write(io, """<label for="$slide_num_str" style="left:$(1.5*(i))em"></label>""")
-    # write(io, """<div class="helper">""")
-    write(io, """<img src="$img_path" alt="Panel 1">""")
-    # write(io, """</div">""")
-    # write(io, """$n""")
-    write(io, "</li>")
-  end
-  write(io, "</ul>")
-  write(io, "</div>")
+  write(io, """base_name = $base_name""") # debug
+  write(io, """img_dict = $img_dict""") # debug
+
+  # write(io, """<div class="slider">""")
+  # write(io, """<ul class="slider" style="height: $(height)px;">""")
+  # for (i,n) in enumerate(img_nums)
+  #   img_path = "/assets/blog_images/" * img_dict[n]
+  #   # @info img_path
+  #   slide_num_str = "slide$(n)"
+  #   write(io, "<li>")
+  #   # write(io, """<span class="helper"></span>""")
+  #   write(io, """<input type="radio" id="$slide_num_str" name="slide" checked>""")
+  #   write(io, """<label for="$slide_num_str" style="left:$(1.5*(i))em"></label>""")
+  #   # write(io, """<div class="helper">""")
+  #   write(io, """<img src="$img_path" alt="Panel 1">""")
+  #   # write(io, """</div">""")
+  #   # write(io, """$n""")
+  #   write(io, "</li>")
+  # end
+  # write(io, "</ul>")
+  # write(io, "</div>")
   return String(take!(io))
 end
 

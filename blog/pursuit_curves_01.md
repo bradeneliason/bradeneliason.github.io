@@ -24,7 +24,7 @@ $$ F' = \frac{k(R-F)}{\left| R-F \right|} $$
 
 I'm defining a custom plotting recipe in Julia. This creates the plots seen below containing a lines with trailing widths. The last line of this code block shouldn't be ignored. This single line defines the differential equation which governs the path of the fox. It takes the function pursued (the path that the rabbit takes) and spits out the velocity vector of the fox.
 
-```julia:./code/pursuit_curves_01
+```julia
 using Plots
 using DifferentialEquations, OrdinaryDiffEq
 using LinearAlgebra
@@ -49,7 +49,7 @@ pursuit(u, k, t) = k * (pursued(t) - u) / norm(pursued(t)-u)
 
 The following simulation has the rabbit run in a unit circle with the fox starting at [4, 0]. In this simulation the fox is only 80% as fast as the rabbit, so he's never able to catch the rabbit.
 
-```julia:./code/pursuit_curves_01_fig1
+```julia
 pursued(t) = [cos(t), sin(t)]
 prob = ODEProblem(pursuit, [4.0, 0.0], (0.0, 17), 0.8)
 sol = solve(prob, saveat=0.1);
@@ -66,7 +66,7 @@ savefig(joinpath(@OUTPUT, "fig1a.png")) # hide
 
 The following simulation has the rabbit run straight north starting at [0, -3] with the fox starting at [4, 0] again. Once again, the fox is only 80% as fast as the rabbit, so he's never able to catch the rabbit.
 
-```julia:./code/pursuit_curves_01_fig2a
+```julia
 pursued(t) = [0, (t - 3)]
 prob = ODEProblem(pursuit, [4.0, 0.0], (0.0,6), 1.0)
 sol = solve(prob, saveat=0.1);

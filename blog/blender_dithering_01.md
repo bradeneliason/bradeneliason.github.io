@@ -21,7 +21,10 @@ There are two way to think about this dithering noise: adding noise and then rou
 
 ## Dithering Matrices
 
-```julia:./code/blender_dithering_01_fig2
+\input{julia}{/assets/scripts/blender_dithering_01.jl}
+\fig{/assets/scripts/output/blender_dithering_fig2.png}
+
+<!-- ```julia:./code/blender_dithering_01_fig2
 using Images
 
 function bayer_matrix(size=1)
@@ -44,7 +47,7 @@ end
 padimg = ones((128, 32))
 output = hcat(imgs[1], padimg, imgs[2], padimg, imgs[3], padimg, imgs[4])
 save(joinpath(@OUTPUT, "fig2.png"), colorview(Gray, output))
-```
+``` -->
 
 I created a quick function in Julia to create different threshold maps. These threshold maps (Bayer matrices) are square grey-scale images that are repeated to fill a region. The input image is compared pixel-by-pixel to the threshold map and set to white if it's above the pixel in the map and black if it's below the value in the map. The algorithm on the right can create threshold maps of many different sizes. This algorithm starts with a 2-by-2 matrix and iteratively expands the matrix by two in each dimension to reach a desired size. The final step is dividing the matrix by an appropriate factor of two to yield values between zero and one.
 

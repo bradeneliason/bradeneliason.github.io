@@ -36,7 +36,10 @@ $$ x=a \sqrt{k+\cos t} $$
 
 $$ y=\frac{a}{2} \int_{0}^{t} \frac{\cos u} {\sqrt{k+\cos u}} du $$
 
-```julia:./code/favorite_shape_01_ex1
+\input{julia}{/assets/scripts/favorite_shape_01.jl} 
+\fig{/assets/scripts/output/favorite_shape_01_fig2.svg}
+
+<!-- ```julia:./code/favorite_shape_01_ex1
 using Plots
 
 k = 0.65223
@@ -49,9 +52,9 @@ y = cumsum(@. cos(t)/sqrt(k + cos(t))*dt)/2
 
 plot(x,y, aspect_ratio=1, lw=4, legend=:none)
 savefig(joinpath(@OUTPUT, "favorite_shape_01_ex1.png")) # hide
-```
+``` -->
 
-\fig{./code/favorite_shape_01_ex1.png}
+<!-- \fig{./code/favorite_shape_01_ex1.png} -->
 
 ## Elastica - Elastic Curves
 

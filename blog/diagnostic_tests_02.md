@@ -15,7 +15,10 @@ I wanted to revisit a visualization that I made in a [previous post](/blog/diagn
 
 Instead of fundamentally altering the diagram, I figured I could rescale the axes. Logarithmic scaling is for [quitters](https://xkcd.com/1162/) and doesn't meet my needs, so I need a new scaling function. Probability is bounded between 0 and 1. I want to expand the regions on the ends of this range nearest to 0 and 1. On the low end, I need to distinguish two anomalous events with probabilities like 1% and 0.1%. Similarly, I would like the scale to distinguish two events which are nearly certain with probabilities like 99% and 99.9%. The scaling function should have an inverted "S" shape that gets steeper near 0 and 1. The steep regions of the graph have the effect of mapping a narrow range of inputs (depicted on the x-axis) into a larger region of output (depicted on the y-axis).
 
-```julia:./code/diagnostic_tests_02_fig2
+\input{julia}{/assets/scripts/diagnostic_tests_02_1.jl}
+\fig{/assets/scripts/output/diagnostic_tests_02_fig2.svg}
+
+<!-- ```julia:./code/diagnostic_tests_02_fig2
 using Plots
 
 logit(x) = log(x/(1-x))
@@ -29,10 +32,10 @@ begin
 	)
 end
 savefig(joinpath(@OUTPUT, "fig2.png")) # hide
-```
+``` -->
 
 <!-- \fig{./code/diagnostic_tests_02_fig2.png} -->
-{{postfig 2 "Plot of logit function with asymptotes at 0 and 1."}}
+<!-- {{postfig 2 "Plot of logit function with asymptotes at 0 and 1."}} -->
 
 At first it seems like [logit function](https://en.wikipedia.org/wiki/Logit) (the inverse of the logistic function) might be a good fit. This maps values between 0 and 1 to $-∞$ and $+∞$. The one annoyance is that it takes a bounded range and maps it to an unbounded range. I wanted all the relevant features of my visualization to stay within a box so having a rescaling capable of shooting points off to infinity was not ideal.
 
@@ -46,7 +49,11 @@ I have to credit an answer from [user Ron on math.StackExhange.com](https://math
 
 I've found that a scaling factor of $\frac{1}{5}$ is a really good balance. With this scaling factor probabilities of 0.1%, 1%, 10%, and their inverses get remapped to close to 10% divisions. This means I can create nearly regularly spaced ticks marks that fall on these preferred numbers.
 
-```julia:./code/diagnostic_tests_02_fig3
+<!-- TODO: fix formatting of this code -->
+\input{julia}{/assets/scripts/diagnostic_tests_02_2.jl} 
+\fig{/assets/scripts/output/diagnostic_tests_02_fig3.svg}
+
+<!-- ```julia:./code/diagnostic_tests_02_fig3
 using Plots
 
 scale_fwd(x, k=5) = 1 / (1 + ((1/x) - 1)^(1/k))
@@ -67,10 +74,10 @@ begin
 	)
 end
 savefig(joinpath(@OUTPUT, "fig3.png")) # hide
-```
+``` -->
 
 <!-- \fig{./code/diagnostic_tests_02_fig3.png} -->
-{{postfig 3 "Plot of bounded scaling function and it's inverse" 100}}
+<!-- {{postfig 3 "Plot of bounded scaling function and it's inverse" 100}} -->
 
 ## New Version of the Visualization
 

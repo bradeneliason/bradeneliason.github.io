@@ -24,28 +24,28 @@ tags = ["syntax", "code", "image"]
 @@timeline-element
    {{resume_title "Owner" 2021 2022}}
    {{resume_subtitle "Journeywork Product Design" "Minneapolis, MN")}}
-   Journeywork Product Design is a design consultancy helping medical device companies launch new products. We help our clients find new medical device markets, research the market need, develop new products, craft regulatory/reimbursement strategies, develop prototypes, and much more.
+   Journeywork Product Design is a design consultancy helping medical device companies launch new products. We help our clients find new medical device markets, research the market needs, develop new products, craft regulatory/reimbursement strategies, develop prototypes, and much more.
 @@
 
 @@timeline-element
    {{resume_title "Innovation Fellow " 2020 2021}}
    {{resume_subtitle "Bakken Medical Devices Center, University of Minnesota" "Minneapolis, MN")}}
 
- * Identified unmet medical needs through healthcare utilization and voice of customer (VOC) research
- * Conducted over 50 interviews with customers to refine value proposition design
- * Led brainstorming to generate new solutions to treat unmet medical need guided by VOC input
- * Crafted grants, intellectual property disclosures, study protocols, and prototypes
+ * Identified unmet medical needs through healthcare utilization and voice of customer (VOC) research
+ * Conducted over 50 interviews with customers to refine value proposition design
+ * Led brainstorming to generate new solutions to treat unmet medical needs guided by VOC input
+ * Crafted grants, intellectual property disclosures, study protocols, and prototypes
 @@
   
 @@timeline-element
-  {{resume_title "Cheif Technology Officer" 2017 2020}}
+  {{resume_title "Chief Technology Officer" 2017 2020}}
   {{resume_subtitle "CranioVation (now Alpheus Medical)" "Oakdale, MN")}}
   
 * Designed and executed product development strategy, including regulatory and intellectual property strategy
-* Invented non-invasive modality for treating aggressive cancers
+* Invented a non-invasive modality for treating aggressive cancers
 * Design and conduct in vitro experiments
 * Engineer in vitro and in vivo experimental apparatus
-* Manage a team of experts to simulate novel medical device with finite element analysis
+* Manage a team of experts to simulate a novel medical device with finite element analysis
 @@
 
 @@timeline-element
@@ -74,8 +74,8 @@ tags = ["syntax", "code", "image"]
   {{resume_title "Biomedical Engineering, BS" 2009 2013}}
   {{resume_subtitle "Washington University in St. Louis" "St. Louis, MO")}}
 
- * *Alpha Eta Mu Beta* - biomedical engineering honor society
- * *Tau Beta Pi* - engineering honor society
+ * *Alpha Eta Mu Beta* - Biomedical Engineering Honor Society
+ * *Tau Beta Pi* - Engineering Honor Society
 
 @@
 @@
@@ -93,6 +93,8 @@ tags = ["syntax", "code", "image"]
  * System modeling
 
 ## Patents & Applications
+
+<!-- TODO: update list -->
 
  1. Basket for a multi-electrode array catheter - *(US9474486)*
  1. Active detection of sensor transition from covered to exposed - *(US9724014)*

@@ -12,8 +12,8 @@
     line-height: 1.35em;
     /* background: rgb(0,69,117); */
     /* background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); */
-    background-image: url("../assets/images/cartographer.png");
-    /* background-image: url("../assets/images/tiny_grid.png"); */
+    background-image: url("/assets/images/cartographer.png");
+    /* background-image: url("/assets/images/tiny_grid.png"); */
     background-position: left top;
     background-size: auto;
     background-repeat: repeat;
