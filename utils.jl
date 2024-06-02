@@ -284,54 +284,60 @@ function post_list_from_paths(io, paths)
   return io
 end
 
-"""
-Lists recent blog posts
-TODO: list just the top N posts?
-"""
-function hfun_recentblogposts()
-  # Get all the md files in the blog directory and sorts them by date
-  list = readdir("blog")
-  filter!(f -> endswith(f, ".md"), list)
-  list = mdfile_to_rpath.(list)
-  sort!(list, by=get_date, rev=true)
+# """
+# Lists recent blog posts
+# TODO: list just the top N posts?
+# """
+# function hfun_recentblogposts()
+#   # Get all the md files in the blog directory and sorts them by date
+#   list = readdir("blog")
+#   filter!(f -> endswith(f, ".md"), list)
+#   list = mdfile_to_rpath.(list)
+#   sort!(list, by=get_date, rev=true)
 
-  # Generates the list of posts
-  io = IOBuffer()
-  post_list_from_paths(io, list)
-  return String(take!(io))
-end
+#   # Generates the list of posts
+#   io = IOBuffer()
+#   post_list_from_paths(io, list)
+#   return String(take!(io))
+# end
+
+# """
+# Lists all blog posts
+# TODO: add pagination
+# TODO: add optional images
+# """
+# function hfun_allblogposts()::String
+#   c = IOBuffer()
+
+#   mdfilelist = readdir("blog")
+#   rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
+#   write(c, """<ul class="post-list">""")
+
+#   for rpath in rpaths
+#       title = pagevar(rpath, "title")
+#       date = get_date(rpath)
+#       if isnothing(title)
+#           title = "/$rpath/"
+#       end
+
+#       date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
+
+#       url = get_url(rpath)
+#       # write(c, "<li><a href=\"$url\">$title</a></li>")
+#       write(c, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
+#   end
+
+#   write(c, "</ul>")
+#   return String(take!(c))
+# end
 
 """
 Lists all blog posts
 TODO: add pagination
 TODO: add optional images
+TODO: add desc
 """
-function hfun_allblogposts()::String
-  c = IOBuffer()
-
-  mdfilelist = readdir("blog")
-  rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
-  write(c, """<ul class="post-list">""")
-
-  for rpath in rpaths
-      title = pagevar(rpath, "title")
-      date = get_date(rpath)
-      if isnothing(title)
-          title = "/$rpath/"
-      end
-
-      date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
-
-      url = get_url(rpath)
-      # write(c, "<li><a href=\"$url\">$title</a></li>")
-      write(c, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
-  end
-
-  write(c, "</ul>")
-  return String(take!(c))
-end
-
-function hfun_posts()
+@delay function hfun_posts()
   io = IOBuffer()
   mdfilelist = readdir("blog")
   rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
@@ -342,7 +348,7 @@ function hfun_posts()
     title = pagevar(rpath, "title")
     date = get_date(rpath)
     date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
-    url = url = get_url(rpath)
+    url = get_url(rpath)
     push!(postlist, (;rpath, date, title, date_str, url))
   end
   sort!(postlist, by = x -> x.date, rev=true)
