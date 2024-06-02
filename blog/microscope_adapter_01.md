@@ -15,11 +15,25 @@ I have a set of Moment lenses for my phone that attach via a bayonet mount to a 
 
 As many engineers know, CAD designs live in a universe devoid of scale, gravity, and the nuisance of manufacturing limitations. This adapter was to live at the top of the microscope with the screen of my phone pointing upwards. In this orientation, the weight of my phone would torque on the small printed tabs of the adapter. The solution was to prints supports which braced against the back of my phone. The supports lower the amount of force applied to the mounting tabs and prevents them from breaking.
 
-{{postfig 1 "Close up of first prototype"}}
+<!-- {{postfig 1 "Close up of first prototype"}} -->
+\fig{/assets/blog_images/microscope_adapter_01_fig1.jpg}
 
 Currently, the position and orientation of the adapter relative to the eyepiece are set with three screws with generous wiggle room. In the future, I'd like to print a 3rd version with hard stops that seat the adapter at the correct position.
 
-~~~ 
+Close up of the Moment case interface with hard stops:
+\fig{/assets/blog_images/microscope_adapter_01_fig2.jpg}
+
+Adapter at Work:
+\fig{/assets/blog_images/microscope_adapter_01_fig3.jpg}
+
+Adapter mounted on eyepiece:
+\fig{/assets/blog_images/microscope_adapter_01_fig4.jpg}
+
+Image acquired from my cellphone:
+\fig{/assets/blog_images/microscope_adapter_01_fig5.jpg}
+
+
+<!-- ~~~ 
 <div class="figgrid">
 ~~~
 {{postfig 2 "Close up of the Moment case interface with hard stops"}}
@@ -28,4 +42,4 @@ Currently, the position and orientation of the adapter relative to the eyepiece 
 {{postfig 5 "Image acquired from my cellphone"}}
 ~~~ 
 </div>
-~~~
+~~~ -->

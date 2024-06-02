@@ -50,7 +50,8 @@ Consider the simple case of stacking two parts on together.
  * The left, purple part has a dimension of $40 \pm 0.5 mm$.
  * The right, blue part has a dimension of $25 \pm 0.1 mm$.
 
-{{postfig 1 "Tolerance stack up" 60}}
+<!-- {{postfig 1 "Tolerance stack up" 60}} -->
+\fig{/assets/blog_images/tolerance_analysis_01_fig1.png}
 
 ### Worst-Case Tolerance Analysis
 
@@ -104,11 +105,13 @@ Consider our simple example above. The following code is able to replicate the s
 
 Okay, that's too easy. Let's try a problem with more teeth.
 
-{{postfig 2a "Tolerance analysis example" 100}}
+<!-- {{postfig 2a "Tolerance analysis example" 100}} -->
+\fig{/assets/blog_images/tolerance_analysis_01_fig2a.png}
 
 This example was taken from an example in the [documentation for the MITCalc.com](https://www.mitcalc.com/doc/tolanalysis3d/help/en/tolanalysis3d.htm) tolerance analysis calculator. Imagine a part with two holes. The positions of the two holes are determined by chains of dimensions. We would like to know the center-to-center distance and tolerance between the two holes. Our simple calculation methods above quickly become unwieldy.
 
-{{postfig 2b "Tolerance analysis example, variable names" 100}}
+<!-- {{postfig 2b "Tolerance analysis example, variable names" 100}} -->
+\fig{/assets/blog_images/tolerance_analysis_01_fig2b.png}
 
 The MITCalc example suggests first deriving the equations below:
 

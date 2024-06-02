@@ -11,7 +11,8 @@ tags = ["Julia"]
 <!-- TODO: Simulation of energy accumulating in a turbid volumeSimulation of energy accumulating in a turbid volume -->
 
 <!-- ![Monte Carlo light transport animation](/assets/blog_images/light_transport_01_fig1.gif) -->
-{{postfig 1 "Monte Carlo light transport animation" 100}}
+<!-- {{postfig 1 "Monte Carlo light transport animation" 100}} -->
+\fig{/assets/blog_images/light_transport_01_fig1.gif}
 
 Monte Carlo methods are a class of algorithms that rely on random sampling to generate a result. These methods can obtain results for both random and deterministic processes. For example, the value of $\pi$ is deterministic, but by sampling random points within a square and testing if they fall within a circle you can estimate the value of $\pi$ (albeit quite slowly). For random processes like light scattering, Monte Carlo methods are a natural choice and can be quite versatile.
 
@@ -26,14 +27,17 @@ Absorption pattern from a single photonA single photon's path
 A Monte Carlo simulation of a ray of light in turbid media A ray of light being scattered and dispersed.
 
 <!-- ![Path of a single photon](/assets/blog_images/light_transport_01_fig2.png) -->
-{{postfig 2 "Path of a single photon"}}
+<!-- {{postfig 2 "Path of a single photon"}} -->
+\fig{/assets/blog_images/light_transport_01_fig2.png}
 
 I'm really pleased with the resulting plots. There are certainly more succinct and informative ways to display this information. However, I quite like that it looks like a lightsaber illuminating smoke or fog. Even the graininess from the inherent randomness of this algorithm looks intentional.
 
 <!-- ![3D volume slices](/assets/blog_images/light_transport_01_fig3.png) -->
-{{postfig 3 "3D volume slices" 100}}
+<!-- {{postfig 3 "3D volume slices" 100}} -->
+\fig{/assets/blog_images/light_transport_01_fig3.png}
 
 <!-- ![3D volume perspective](/assets/blog_images/light_transport_01_fig4.png) -->
-{{postfig 4 "3D volume perspective" 90}}
+<!-- {{postfig 4 "3D volume perspective" 90}} -->
+\fig{/assets/blog_images/light_transport_01_fig4.png}
 
 <!-- TODO: A 3D plot of the light energy distribution -->

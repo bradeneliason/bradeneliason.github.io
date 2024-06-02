@@ -11,7 +11,8 @@ tags = ["syntax", "code"]
 # Latest Blog Posts
 
 <!-- {{recentblogposts}} -->
-{{allblogposts}}
+<!-- {{allblogposts}} -->
+{{posts}}
 
 ## Articles by Tag:
 

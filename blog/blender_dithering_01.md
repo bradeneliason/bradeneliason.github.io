@@ -15,7 +15,8 @@ Dithering an image is adding noise to it. Typically we want as little noise in a
 
 Images with this color banding are accurate at the pixel level. That is, every pixel is displayed with the color as close to the original as possible (minimal pixel quantization error). But this per-pixel accuracy often results in very ugly images. Instead consider treating a block of pixels as a unit instead of the single pixel. We perceive the average of a block of pixels and this pixel grouping allows for more possible perceived gradations. The dithered gradient in the image below is composed of only black and white pixels, but the blocks of pixels are perceived as gradations of grey. So while dither causes the quantization error of the image to increase at the pixel level, the result is perceived as closer to the input gradient. Thus dithering is adding noise to an image in such a way that it reduces the perceptual cost of quantization errors.
 
-{{postfig 1 "Ordered Dithering" 100}}
+<!-- {{postfig 1 "Ordered Dithering" 100}} -->
+\fig{/assets/blog_images/blender_dithering_01_fig1.png}
 
 There are two way to think about this dithering noise: adding noise and then rounding or having a different threshold across a block of pixels. To dither a block of pixels we can add a block of noise and round up and down with a threshold of 50%. The noise we add is set up so that a block of 50% grey pixels would have half its pixels rounded up to white and half its pixels rounded down to black. Similarly, a block of 25% percent grey would have noise added such that rounding with a 50% threshold results in about 25% of the pixels being white. The other way to think about this having a different threshold for each pixel within a block. These methods are equivalent, but I wanted to make it clear that the threshold matrices that I am creating below have the effect of adding noise.
 
@@ -53,7 +54,7 @@ I created a quick function in Julia to create different threshold maps. These th
 
 Enlarged images created with the script are shown below. I've also provided a link to download the image files so that you can jump right into Blender.
 
-{{postfig 2 "Bayer Matrices of different sizes" 100}}
+<!-- {{postfig 2 "Bayer Matrices of different sizes" 100}} -->
 <!-- \fig{./code/fig2.png} -->
 <!-- \fig{./code/bayer_1.png}
 \fig{./code/bayer_2.png}
@@ -65,26 +66,47 @@ Enlarged images created with the script are shown below. I've also provided a li
 
 Below are two images of the default Blender monkey Suzanne with and without dithering. The image on the left has no dithering, so any pixel above the threshold of 50% grey is set to white. The image on the right is still composes of only black and white pixels, but the dither produces the appearance of fine gradations of grey. I added a rendering pass to draw lines around certain contours of the model to give the model more form and produce a retro line art and shading appearance.
 
-~~~ 
+Without Dithering:
+\fig{/assets/blog_images/blender_dithering_01_fig3a.png}
+
+With Dithering:
+\fig{/assets/blog_images/blender_dithering_01_fig3b.png}
+
+<!-- ~~~ 
 <div class="figgrid">
 ~~~
 {{postfig 3a "Without Dithering"}}
 {{postfig 3b "With Dithering"}}
 ~~~ 
 </div>
-~~~
+~~~ -->
 
 ## Send Nodes
 
 Here are the Blender image compositor node setup for to produce the results above.
 
-{{postfig 4 "Bledner node"}}
+<!-- {{postfig 4 "Bledner node"}} -->
+\fig{/assets/blog_images/blender_dithering_01_fig4.png}
 
-{{postfig 5 "Node Group"}}
+<!-- {{postfig 5 "Node Group"}} -->
+\fig{/assets/blog_images/blender_dithering_01_fig5.png}
 
 ## More Results
 
-~~~ 
+Color Wheel Input:
+\fig{/assets/blog_images/blender_dithering_01_fig6a.png}
+
+Color Wheel Quantized:
+\fig{/assets/blog_images/blender_dithering_01_fig6b.png}
+
+Color Wheel Dithered:
+\fig{/assets/blog_images/blender_dithering_01_fig6c.png}
+
+
+Dithered Animation:
+\fig{/assets/blog_images/blender_dithering_01_fig7.gif}
+
+<!-- ~~~ 
 <div class="figgrid">
 ~~~
 {{postfig 6a "Color Wheel Input"}}
@@ -92,4 +114,4 @@ Here are the Blender image compositor node setup for to produce the results abov
 {{postfig 6c "Color Wheel Dithered"}}
 ~~~ 
 </div>
-~~~
+~~~ -->

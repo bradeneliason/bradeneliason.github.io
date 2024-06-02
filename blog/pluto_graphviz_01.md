@@ -17,4 +17,5 @@ Currently this project is just a prototype which you can view and download on my
 <!-- TODO: Image -->
 
 <!-- ![alt text](/assets/blog_images/pluto_graphviz_01_fig1.gif) -->
-{{postfig 1 "Interactive demo of graph visualization" 100}}
+<!-- {{postfig 1 "Interactive demo of graph visualization" 100}} -->
+\fig{/assets/blog_images/pluto_graphviz_01_fig1.gif}

@@ -10,7 +10,9 @@ Biomedical engineering was a natural choice for me. It combines my knack for eng
 
 ## Starting Point
 <!-- ![.](/assets/blog_images/bottle_opener_01_fig01.jpg) -->
-{{postfig 1 "Bottle opener opener downloaded as a starting point"}}
+<!-- {{postfig 1 "Bottle opener opener downloaded as a starting point"}} -->
+\fig{/assets/blog_images/bottle_opener_01_fig1.jpg}
+
 
 I can't claim credit for this design. I believe I downloaded this design from [MyMiniFactory](https://www.myminifactory.com/object/3d-print-assistive-bottle-opener-74399), though there appears to be several versions of this opener floating around on the web. Armed with my [Prusa i3 MK3](https://www.myminifactory.com/object/3d-print-assistive-bottle-opener-74399), I printed this design as a starting point for my prototyping.
 
@@ -20,7 +22,8 @@ I also wanted to improve the aesthetics of this device if I could. The hard surf
 
 ## Prototype 1 - Complete Failure
 <!-- ![](/assets/blog_images/bottle_opener_01_fig02.jpg) -->
-{{postfig 2 "Prototype 1 of bottle opener"}}
+<!-- {{postfig 2 "Prototype 1 of bottle opener"}} -->
+\fig{/assets/blog_images/bottle_opener_01_fig2.jpg}
 
 My next thought was to add a conical taper to the cap-gripping portion. I increased the height of the cap-gripping section to have a gently tapering cone. As I was designing this, I suspected that the opener would simply slide upward as the grips were closed. This was indeed the case.
 
@@ -28,7 +31,8 @@ If there was enough friction and the taper angle of the cone were shallow enough
 
 ## Prototype 2 - Progress
 <!-- ![](/assets/blog_images/bottle_opener_01_fig03.jpg) -->
-{{postfig 3 "Prototype 2 of bottle opener"}}
+<!-- {{postfig 3 "Prototype 2 of bottle opener"}} -->
+\fig{/assets/blog_images/bottle_opener_01_fig3.jpg}
 
 With this new prototype I added three different sections of different diameters. This opened most of the caps that I tested. I added a taper between each section of different diameters. This taper helps with 3D printing. The added benefit is that if the cap is slightly larger than one of the sections, a small amount of downward pressure will expand the opener to allow the cap to fit.
 
@@ -40,7 +44,8 @@ There were a few issues that I wanted to improve:
 
 ## Prototype 3 - Ready for Testing
 <!-- ![](/assets/blog_images/bottle_opener_01_fig04.jpg) -->
-{{postfig 4 "Prototype 3 of bottle opener"}}
+<!-- {{postfig 4 "Prototype 3 of bottle opener"}} -->
+\fig{/assets/blog_images/bottle_opener_01_fig4.jpg}
 
 I added several more sections of different diameters to the cap-gripping section. The handles were lengthened and materials was taken away from around the cap-gripper. This prototype works wonderfully. The are only a few bottle that it doesn't work on. If a bottle has a small cap and the neck of the bottle is much wider, the bottle opener can run into the bottle's neck before the cap gets to the right section of the cap-gripper.
 
@@ -54,9 +59,9 @@ I would like to try a design based on a jamming principle next. That is, when bo
 
 With a jamming mechanism bottle opener, the limiting factor may become the user's grip on the bottle itself. I'd like to build a jamming mechanism for holding the bottle secure to a kitchen countertop or table. Caps have a smaller range of sizes compared with bottles. I suspect the challenge will be to make a mechanism that can hold bottles of all different sizes securely.
 
-## Gallery
+<!-- ## Gallery
 
-{{gallery [1,2,3,4] 600}}
+{{gallery [1,2,3,4] 600}} -->
 
 ## Additional Articles:
 

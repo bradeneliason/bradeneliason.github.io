@@ -27,12 +27,14 @@ plantuml"Kroki -> Julia: Hello Julia!"
 ```
 
 <!-- ![Hello Julia](/assets/blog_images/kroki_pluto_01_fig1.png) -->
-{{postfig 1 "PlantUML Example Hello Julia" 50}}
+<!-- {{postfig 1 "PlantUML Example Hello Julia" 50}} -->
+\fig{/assets/blog_images/kroki_pluto_01_fig1.png}
 
 Making diagrams interactively in Pluto is as simple as updating the string which defines the diagram. For example a text box could be used to update the name in the diagram above with a simple string interpolation. Note: it simpler to to interpolate the string and send it to the `Kroki.diagram` function than interpolating in a `plantuml"..."` macro string.
 
 <!-- ![Hello Julia](/assets/blog_images/kroki_pluto_01_fig2.png) -->
-{{postfig 2 "PlantUML Example with interactivity" 100}}
+<!-- {{postfig 2 "PlantUML Example with interactivity" 100}} -->
+\fig{/assets/blog_images/kroki_pluto_01_fig2.png}
 
 The demo on the right shows a Vega Lite diagram being interactively update from a data in a textbox. The raw input data is split into individual number and parsed as numbers. Then a vector of named tuples is created in the format of (`category=1, value=15)`. This named data is then converted directly into JSON inside the piechart specification string.
 
@@ -56,6 +58,7 @@ vl_piechart = """
 ```
 
 <!-- ![Hello Julia](/assets/blog_images/kroki_pluto_01_fig3.gif) -->
-{{postfig 3 "Vega Lite diagram being interactivity" 100}}
+<!-- {{postfig 3 "Vega Lite diagram being interactivity" 100}} -->
+\fig{/assets/blog_images/kroki_pluto_01_fig3.gif}
 
 If you want to explore these experiments for yourself, I've made a repository on my Github: [PlutoKrokiPlayground](https://github.com/bradeneliason/PlutoKrokiPlayground). Leave me a star on Github if you enjoyed this project.

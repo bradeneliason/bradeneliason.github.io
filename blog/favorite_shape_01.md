@@ -12,14 +12,16 @@ hasmath = true
 This is a love letter to my favorite shape, half of Euler's figure-eight ... or *Fig. 8*.
 
 <!-- ![](/assets/blog_images/favorite_shape_01_fig1.png) -->
-{{postfig 1 "Euler's Fig. 8"}}
+<!-- {{postfig 1 "Euler's Fig. 8"}} -->
+\fig{/assets/blog_images/favorite_shape_01_fig1.png}
 
 I know... it's a little weird to have a favorite shape. It's even weirder to be so specific about one's favorite shape. But bear with me, this is a really cool shape.
 
 ## Pre-history
 
 <!-- ![Acheulean hand axe](/assets/blog_images/favorite_shape_01_fig2.jpg) -->
-{{postfig 2 "Acheulean hand axe" 50}}
+<!-- {{postfig 2 "Acheulean hand axe" 50}} -->
+\fig{/assets/blog_images/favorite_shape_01_fig2.jpg}
 
 It looks similar to some of the earliest tools humans made, the Acheulean hand axe.
 
@@ -63,7 +65,8 @@ If take an elastic strip and curl it around so that the ends meet, it makes half
 This shape is just one curve belonginging to a family of curves called elastica or elastic curves. The study of elastic curves has puzzled the minds of many famous mathematicians, notably Galilieo, Bernoulli, and Euler. Euler built on the analysis of Bernoulli and was able to characterize this family of curves completely.
 
 <!-- ![Elastic Curves](/assets/blog_images/favorite_shape_01_fig3.png) -->
-{{postfig 3 "Elastic Curves" 50}}
+<!-- {{postfig 3 "Elastic Curves" 50}} -->
+\fig{/assets/blog_images/favorite_shape_01_fig3.png}
 
 ## Lintearia - Water in a tarp
 
@@ -72,7 +75,8 @@ It turns out that there is another example in physics which produces this curve 
 Without the water, the tarp would form a centenary curve. When you fill the tarp with water, the water pressure pushes outwards against the tarp. Importantly, the water pressure increases with depth causing the tarp to bulge out at the bottom. If the bars are drawn together, the shape created is half of Euler's figure-eight.
 
 <!-- ![Lintearia](/assets/blog_images/favorite_shape_01_fig4.png) -->
-{{postfig 4 "Lintearia" 100}}
+<!-- {{postfig 4 "Lintearia" 100}} -->
+\fig{/assets/blog_images/favorite_shape_01_fig4.png}
 
 ## Similar Curves
 

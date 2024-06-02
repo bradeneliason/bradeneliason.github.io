@@ -14,7 +14,9 @@ This started as a challenge on the Julia Discourse website to come up with a com
 
 {{jlpkg ApproxFun.jl}} is well suited to finding the solutions of ordinary differential equations (ODEs) with boundary conditions. One application for this is solving beam deflection under various loading conditions. As a test case, here's a simple beam deflection problem: a cantilevered beam with uniform loading. The beam has length, L, and it's stiffness is determined by both the elastic modulus, E, and the moment of inertia, I.
 
-{{postfig 1 "Uniformly loaded cantilever beam" 100}}
+<!-- {{postfig 1 "Uniformly loaded cantilever beam" 100}} -->
+\fig{/assets/blog_images/beam_deflection_01_fig1.png}
+
 
 ## My Seven Lines (excluding imports)
 
@@ -64,9 +66,9 @@ plot([plot(z, f, title=n, label="") for (f,n) in func_name]..., lw=3)
 When not constrained to seven lines of code, it's much easier to document and read this Julia code. The code below show a 2 meter long beam with load which increases from 0 at the fixed end to 1 kN/m at the end of the beam. Here's a diagram of the problem setup.
 
 <!-- ![alt text](/assets/blog_images/beam_deflection_01_fig2.png) -->
-{{postfig 2 "Uniformly varying load on a cantilever beam" 100}}
+<!-- {{postfig 2 "Uniformly varying load on a cantilever beam" 100}} -->
+\fig{/assets/blog_images/beam_deflection_01_fig2.png}
 
-Full Code:
 \input{julia}{/assets/scripts/beam_deflection_02.jl}
 \fig{/assets/scripts/output/beam_deflection_fig2a.svg}
 <!-- \input{julia}{scripts/beam_deflection_02.jl} -->

@@ -59,8 +59,10 @@ pursuitplot!(sol.t, sol.u, color=:tomato2, label="Fox")
 savefig(joinpath(@OUTPUT, "fig1a.png")) # hide
 ```
 
-{{postfig 1a "Animation: Rabbit running in a circle" 100}}
-{{postfig 1b "Animation: Rabbit running in a circle" 100}}
+<!-- {{postfig 1a "Animation: Rabbit running in a circle" 100}} -->
+<!-- {{postfig 1b "Animation: Rabbit running in a circle" 100}} -->
+
+\fig{/assets/blog_images/pursuit_curves_01_fig1b.gif}
 
 ## Rabbit Running in a Line
 
@@ -76,5 +78,7 @@ pursuitplot!(sol.t, sol.u, color=:tomato2, label="Fox")
 savefig(joinpath(@OUTPUT, "fig2a.png")) # hide
 ```
 
-{{postfig 2a "Rabbit Running in a Line" 100}}
-{{postfig 2b "Animation: Rabbit Running in a Line" 100}}
+<!-- {{postfig 2a "Rabbit Running in a Line" 100}} -->
+<!-- {{postfig 2b "Animation: Rabbit Running in a Line" 100}} -->
+
+\fig{/assets/blog_images/pursuit_curves_01_fig2b.gif}

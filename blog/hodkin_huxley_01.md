@@ -74,7 +74,8 @@ h_∞(dV) = α_h(dV)/(α_h(dV)+β_h(dV))
 ## Differential Equations
 
 <!-- ![Circuit diagram of neuron membrane](/assets/blog_images/hodkin_huxley_01_fig1.png) -->
-{{postfig 1 "Circuit diagram of neuron membrane" 100}}
+<!-- {{postfig 1 "Circuit diagram of neuron membrane" 100}} -->
+\fig{/assets/blog_images/hodkin_huxley_01_fig1.png}
 
 This diagram shows the circuit model for a small patch of cell membrane. Each ion can only pass through a designated channel. The conductance of each ion channel is determined by the parameters G which is affected by the activation particles described above. Each ion also has a voltage associated with it called the Nernst voltage. In addition to the ion channel conductances, there are also leak currents and capacitive currents. From this circuit model, the final differential equation can be derived.
 
@@ -146,5 +147,5 @@ plot(
 )
 savefig(joinpath(@OUTPUT, "fig2.png")) # hide
 ```
-
-{{postfig 2 "Simulated neuron results. The light blue curve indicataes the voltage acorss the cell membrane. The red curve is the injected current stimulus that causes the simulated cell to depolarize. The blue, orange, and green curve show the dynamics of the activating particles." 100}}
+<!-- TODO: -->
+<!-- {{postfig 2 "Simulated neuron results. The light blue curve indicataes the voltage acorss the cell membrane. The red curve is the injected current stimulus that causes the simulated cell to depolarize. The blue, orange, and green curve show the dynamics of the activating particles." 100}} -->

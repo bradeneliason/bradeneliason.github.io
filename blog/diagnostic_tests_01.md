@@ -41,7 +41,8 @@ The visualization below demonstrates the performance of diagnostic tests with re
  * The right column represent healthy people.
  * The green regions represent *correct* test results.
 
-{{postfig 1 "Diagnositic test visualization" 100}}
+<!-- {{postfig 1 "Diagnositic test visualization" 100}} -->
+\fig{/assets/blog_images/diagnostic_tests_01_fig1.png}
 
 I'm working on an interactive version of this chart, so stay tuned. My hope is that being able to play with each parameter will result in a deeper intuition for how these parameters relate.
 

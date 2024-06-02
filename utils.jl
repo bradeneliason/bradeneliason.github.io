@@ -129,121 +129,122 @@ function hfun_jlpkg(packagename)
   return """<a href="$link_to">$name</a>"""
 end
 
-function hfun_postfig(varargs)
-  # Unpack arguments
-  sizestr = ""
-  description = ""
-  if length(varargs) == 1
-    figure_num = string(varargs[1])
-  elseif length(varargs) == 2
-    figure_num = string(varargs[1])
-    description = varargs[2]
-  elseif length(varargs) == 3
-    figure_num = string(varargs[1])
-    description = varargs[2]
-    size = parse(Int, varargs[3])
-    sizestr = """style="width: $size%;" """
-  else
-    return @warn "Wrong number of arguments in postfig HTML function"
-  end
+# TODO: Fix this function
+# function hfun_postfig(varargs)
+#   # Unpack arguments
+#   sizestr = ""
+#   description = ""
+#   if length(varargs) == 1
+#     figure_num = string(varargs[1])
+#   elseif length(varargs) == 2
+#     figure_num = string(varargs[1])
+#     description = varargs[2]
+#   elseif length(varargs) == 3
+#     figure_num = string(varargs[1])
+#     description = varargs[2]
+#     size = parse(Int, varargs[3])
+#     sizestr = """style="width: $size%;" """
+#   else
+#     return @warn "Wrong number of arguments in postfig HTML function"
+#   end
 
-  alttext = """alt="$description" """
+#   alttext = """alt="$description" """
 
-  base_name = split(splitext(locvar("fd_rpath"))[1], "\\")[2]
-  figure_name = "$base_name" * "_fig" * figure_num * "."
+#   base_name = split(splitext(locvar("fd_rpath"))[1], "\\")[2]
+#   figure_name = "$base_name" * "_fig" * figure_num * "."
 
-  img_list = readdir("./_assets/blog_images")
-  filter!(f -> occursin(figure_name, f), img_list)
+#   img_list = readdir("./_assets/blog_images")
+#   filter!(f -> occursin(figure_name, f), img_list)
 
-  if length(img_list) == 1
-    img_path = "/assets/blog_images/" * img_list[1]
-    io = IOBuffer()
-    generate_figure!(io, figure_num, description, img_path, sizestr, alttext)
-    return String(take!(io))
-  else
-    generated_images_dir = "./__site/assets/blog/$base_name/code/output"
-    @info "Figure: searching for generated images for $base_name in $generated_images_dir"
-    # Check if there is a folder for code generated output
-    if isdir(generated_images_dir)
-      generated_images = readdir("./__site/assets/blog/$base_name/code/output")      
-      filter!(f -> startswith(f, "fig$figure_num"), generated_images)
+#   if length(img_list) == 1
+#     img_path = "/assets/blog_images/" * img_list[1]
+#     io = IOBuffer()
+#     generate_figure!(io, figure_num, description, img_path, sizestr, alttext)
+#     return String(take!(io))
+#   else
+#     generated_images_dir = "./__site/assets/blog/$base_name/code/output"
+#     @info "Figure: searching for generated images for $base_name in $generated_images_dir"
+#     # Check if there is a folder for code generated output
+#     if isdir(generated_images_dir)
+#       generated_images = readdir("./__site/assets/blog/$base_name/code/output")      
+#       filter!(f -> startswith(f, "fig$figure_num"), generated_images)
       
-      # If there is exactly one image in the generated output
-      if length(generated_images) == 1
-        img_path = "/assets/blog/$base_name/code/output/" * generated_images[1]
-        @info "Image found: $img_path"
+#       # If there is exactly one image in the generated output
+#       if length(generated_images) == 1
+#         img_path = "/assets/blog/$base_name/code/output/" * generated_images[1]
+#         @info "Image found: $img_path"
   
-        io = IOBuffer()
-        generate_figure!(io, figure_num, description, img_path, sizestr, alttext)
-        return String(take!(io))
-      # else
-        # @warn "Figure could not be found"
-      end
-    # else 
-    #   @warn "Figure could not be found"
-    end
+#         io = IOBuffer()
+#         generate_figure!(io, figure_num, description, img_path, sizestr, alttext)
+#         return String(take!(io))
+#       # else
+#         # @warn "Figure could not be found"
+#       end
+#     # else 
+#     #   @warn "Figure could not be found"
+#     end
     
-  end
-  @warn "Figure $figure_num in $base_name could not be found"
-  return ""
-end
+#   end
+#   @warn "Figure $figure_num in $base_name could not be found"
+#   return ""
+# end
 
 # write(io, """<figure>""")
 # write(io, """<img src="$img_path" alt="$description" $sizestr $alttext >""")
 # write(io, """<figcaption><span class="fig-num">Figure $figure_num:</span> $description</figcaption>""")
 # write(io, """</figure>""")
-function generate_figure!(io::IOBuffer, figure_num, description, img_path, sizestr, alttext="")
-  write(io, """<figure>""")
-  write(io, """<img src="$img_path" alt="$description" $sizestr $alttext >""")
-  write(io, """<figcaption><span class="fig-num">Figure $figure_num:</span> $description</figcaption>""")
-  write(io, """</figure>""")
-end
-# __site/assets/blog/blender_dithering_01/code/output/fig2.png
+# function generate_figure!(io::IOBuffer, figure_num, description, img_path, sizestr, alttext="")
+#   write(io, """<figure>""")
+#   write(io, """<img src="$img_path" alt="$description" $sizestr $alttext >""")
+#   write(io, """<figcaption><span class="fig-num">Figure $figure_num:</span> $description</figcaption>""")
+#   write(io, """</figure>""")
+# end
+# # __site/assets/blog/blender_dithering_01/code/output/fig2.png
 
-function hfun_gallery(varargs)
-  img_nums = string(varargs[1])
-  img_nums = split(replace(img_nums, r"[\[\]]" => ""), ",")
-  # img_nums = parse.(Int, img_nums)
+# function hfun_gallery(varargs)
+#   img_nums = string(varargs[1])
+#   img_nums = split(replace(img_nums, r"[\[\]]" => ""), ",")
+#   # img_nums = parse.(Int, img_nums)
 
-  height = 500
-  if length(varargs) ≥ 2
-    height = string(varargs[2])
-    @info "Setting gallery height to $height"
-  end
+#   height = 500
+#   if length(varargs) ≥ 2
+#     height = string(varargs[2])
+#     @info "Setting gallery height to $height"
+#   end
   
-  base_name = split(splitext(locvar("fd_rpath"))[1], "\\")[2]
+#   base_name = split(splitext(locvar("fd_rpath"))[1], "\\")[2]
 
-  img_list = readdir("_assets/blog_images/")
-  # filter!(f -> occursin(base_name, f), img_list)
-  @show base_name
-  # @show img_list
-  img_dict = Dict(n => first(filter(i -> occursin("fig$n", i), img_list)) for n in img_nums)
-  @show img_dict
+#   img_list = readdir("_assets/blog_images/")
+#   # filter!(f -> occursin(base_name, f), img_list)
+#   @show base_name
+#   # @show img_list
+#   img_dict = Dict(n => first(filter(i -> occursin("fig$n", i), img_list)) for n in img_nums)
+#   @show img_dict
   
-  io = IOBuffer()
-  write(io, """base_name = $base_name""") # debug
-  write(io, """img_dict = $img_dict""") # debug
+#   io = IOBuffer()
+#   write(io, """base_name = $base_name""") # debug
+#   write(io, """img_dict = $img_dict""") # debug
 
-  # write(io, """<div class="slider">""")
-  # write(io, """<ul class="slider" style="height: $(height)px;">""")
-  # for (i,n) in enumerate(img_nums)
-  #   img_path = "/assets/blog_images/" * img_dict[n]
-  #   # @info img_path
-  #   slide_num_str = "slide$(n)"
-  #   write(io, "<li>")
-  #   # write(io, """<span class="helper"></span>""")
-  #   write(io, """<input type="radio" id="$slide_num_str" name="slide" checked>""")
-  #   write(io, """<label for="$slide_num_str" style="left:$(1.5*(i))em"></label>""")
-  #   # write(io, """<div class="helper">""")
-  #   write(io, """<img src="$img_path" alt="Panel 1">""")
-  #   # write(io, """</div">""")
-  #   # write(io, """$n""")
-  #   write(io, "</li>")
-  # end
-  # write(io, "</ul>")
-  # write(io, "</div>")
-  return String(take!(io))
-end
+#   # write(io, """<div class="slider">""")
+#   # write(io, """<ul class="slider" style="height: $(height)px;">""")
+#   # for (i,n) in enumerate(img_nums)
+#   #   img_path = "/assets/blog_images/" * img_dict[n]
+#   #   # @info img_path
+#   #   slide_num_str = "slide$(n)"
+#   #   write(io, "<li>")
+#   #   # write(io, """<span class="helper"></span>""")
+#   #   write(io, """<input type="radio" id="$slide_num_str" name="slide" checked>""")
+#   #   write(io, """<label for="$slide_num_str" style="left:$(1.5*(i))em"></label>""")
+#   #   # write(io, """<div class="helper">""")
+#   #   write(io, """<img src="$img_path" alt="Panel 1">""")
+#   #   # write(io, """</div">""")
+#   #   # write(io, """$n""")
+#   #   write(io, "</li>")
+#   # end
+#   # write(io, "</ul>")
+#   # write(io, "</div>")
+#   return String(take!(io))
+# end
 
 # """
 # Goes on pages like `/tag/3d_printing/`. Not to be used in other pages.
@@ -330,6 +331,30 @@ function hfun_allblogposts()::String
   return String(take!(c))
 end
 
+function hfun_posts()
+  io = IOBuffer()
+  mdfilelist = readdir("blog")
+  rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
+
+  # Find all posts and store as list of named tuples
+  postlist = []
+  for rpath in rpaths
+    title = pagevar(rpath, "title")
+    date = get_date(rpath)
+    date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
+    url = url = get_url(rpath)
+    push!(postlist, (;rpath, date, title, date_str, url))
+  end
+  sort!(postlist, by = x -> x.date, rev=true)
+
+  # Write sorted output to with styled HTML
+  write(io, """<ul class="post-list">""")
+  for p in postlist
+    write(io, """<li><a class="post-title" href="$(p.url)">$(p.title)</a><span class="post-date">$(p.date_str)</span></li>\n""")
+  end
+  write(io, "</ul>")
+  return String(take!(io))
+end
 
 ################################################################################
 ##

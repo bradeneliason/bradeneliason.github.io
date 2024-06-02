@@ -7,7 +7,8 @@ hasmath = true
 
 {{pageheader}}
 
-{{postfig 1 "Diagnostic Test Visualization with Linear Scale from previous post"}}
+<!-- {{postfig 1 "Diagnostic Test Visualization with Linear Scale from previous post"}} -->
+\fig{/assets/blog_images/diagnostic_tests_02_fig1.png}
 
 I wanted to revisit a visualization that I made in a [previous post](/blog/diagnostic_tests_01) which shows various parameters of diagnostics tests. I glossed over an issue in that previous post that I hope to address here. For a typical screening test, the visualization would be nearly unreadable because important regions on the graph would be too small to see. The box in the visualization is divided vertically by the prevalence of the condition. People with the condition are on the left and people without the condition are on the right. If the prevalence of the condition is low (say 1%), then the people with the condition (both true positives and false negatives) take up just a tiny sliver of the graph. The same problem occurs with very high prevalence for people without the condition. Similarly if the sensitivity or specificity is close to either 0 or 1, one of the boxes vanishes into a sliver.
 
@@ -85,11 +86,13 @@ I recreated my visualization from before but with axes rescaled. Take note of th
 
 Logarithmic scales are ubiquitous for a reason; they have a very nice property that turns curves depicting exponential decays or growth into straight lines. I'm not sure if there is a deeper mathematical elegance to the scale I've chosen or if there is another scaling function that's better suited. My primary goal is to have a readable chart that helps me better understand diagnostic tests.
 
-{{postfig 4 "Diagnostic Test Visualization" 100}}
+<!-- {{postfig 4 "Diagnostic Test Visualization" 100}} -->
+\fig{/assets/blog_images/diagnostic_tests_02_fig4.jpg}
 
 I could have stopped with the image above, but I wasn't quite satisfied. I wanted my visualization to be interactive. I fired up an interactive {{jlpkg Pluto.jl}} notebook and created a visualization which reacts to input from a few sliders. The graphic was made with {{jlpkg Luxor.jl}}. {{jlpkg Luxor.jl}} isn't meant to be interactive, but {{jlpkg Pluto.jl}} notebooks are reactive. When I update the value of a slider, the notebook automatically updates all the affected code including the code which generates the visualization. I may explore using {{jlpkg Javis.jl}} in the future for smoother animations. I'm pretty pleased with the outcome and there's still a lot more that could be done.
 
-{{postfig 5 "Animated Diagnostic Test Visualization" 100}}
+<!-- {{postfig 5 "Animated Diagnostic Test Visualization" 100}} -->
+\fig{/assets/blog_images/diagnostic_tests_02_fig5.gif}
 
 ## Wrapping Up
 
