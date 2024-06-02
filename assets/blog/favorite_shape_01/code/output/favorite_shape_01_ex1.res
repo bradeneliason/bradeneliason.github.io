@@ -1,1 +1,0 @@
-"/home/runner/work/bradeneliason.github.io/bradeneliason.github.io/__site/assets/blog/favorite_shape_01/code/output/favorite_shape_01_ex1.png"

@@ -5,7 +5,7 @@ z = Fun(identity, d)
 B = [[Evaluation(d,<span class=hljs-number >0</span>,k) <span class=hljs-keyword >for</span> k=<span class=hljs-number >0</span>:<span class=hljs-number >1</span>]... ; [Evaluation(d,L,k) <span class=hljs-keyword >for</span> k=<span class=hljs-number >2</span>:<span class=hljs-number >3</span>]... ;]
 v = [B; E*I*Derivative()^<span class=hljs-number >4</span>] \ [ zeros(<span class=hljs-number >4</span>)...; one(z)]
 func_name = zip([v, v&#x27;, v&#x27;&#x27;, v<span class=hljs-string >&#x27;&#x27;&#x27;</span>], [<span class=hljs-string >&quot;Deflection&quot;</span>, <span class=hljs-string >&quot;Angle&quot;</span>, <span class=hljs-string >&quot;Momement&quot;</span>, <span class=hljs-string >&quot;Shear&quot;</span>])
-plot([plot(z, f, title=n, label=<span class=hljs-string >&quot;&quot;</span>) <span class=hljs-keyword >for</span> (f,n) <span class=hljs-keyword >in</span> func_name]..., lw=<span class=hljs-number >3</span>)</code></pre> <h2 id=what_its_doing ><a href="#what_its_doing" class=header-anchor >What It&#39;s Doing</a></h2> <p>The seven lines are bit compressed to fit within the constraints of the challenge so let&#39;s walk through it.</p> <p>These four lines are the simplest. The first line imports the required packages: <code>ApproxFun</code>, <code>Plots</code>. Next we define variables for the length, elastic modulus, and moment of inertia for the beam. The variable, d, is the domain of the ODE, in this case from <code>0</code> to <code>L</code>. The last line in this group creates an <code>ApproxFun</code> function called <code>z</code> across the domain. This function is simply the distance along the beam.</p> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> ApproxFun, Plots
+plot([plot(z, f, title=n, label=<span class=hljs-string >&quot;&quot;</span>) <span class=hljs-keyword >for</span> (f,n) <span class=hljs-keyword >in</span> func_name]..., lw=<span class=hljs-number >3</span>)</code></pre> <img src="/assets/scripts/output/beam_deflection_fig1a.svg" alt=""> <h2 id=what_its_doing ><a href="#what_its_doing" class=header-anchor >What It&#39;s Doing</a></h2> <p>The seven lines are bit compressed to fit within the constraints of the challenge so let&#39;s walk through it.</p> <p>These four lines are the simplest. The first line imports the required packages: <code>ApproxFun</code>, <code>Plots</code>. Next we define variables for the length, elastic modulus, and moment of inertia for the beam. The variable, d, is the domain of the ODE, in this case from <code>0</code> to <code>L</code>. The last line in this group creates an <code>ApproxFun</code> function called <code>z</code> across the domain. This function is simply the distance along the beam.</p> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> ApproxFun, Plots
 L, E, I = <span class=hljs-number >12.0</span>, <span class=hljs-number >1.0</span>, <span class=hljs-number >1.0</span>
 d = <span class=hljs-number >0.</span>.L
 z = Fun(identity, d)</code></pre> <p><code>B</code> is an array of boundary conditions for our ODE. It&#39;s a fourth order ODE, so there are four boundary conditions. The vertical displacement and first derivative &#40;ie, angle&#41; are both zero at the fixed end of the beam. The moment and shear in the beam &#40;2nd and 3rd&#41; derivatives are zero at the free end of the beam.</p> <pre><code class="julia hljs">B = [[Evaluation(d,<span class=hljs-number >0</span>,k) <span class=hljs-keyword >for</span> k=<span class=hljs-number >0</span>:<span class=hljs-number >1</span>]... ; 
@@ -16,7 +16,7 @@ plot([plot(z, f, title=n, label=<span class=hljs-string >&quot;&quot;</span>) <s
 <h2 id=beam_deflection_-_more_breathing_room ><a href="#beam_deflection_-_more_breathing_room" class=header-anchor >Beam Deflection - More Breathing Room</a></h2>
 <p>When not constrained to seven lines of code, it&#39;s much easier to document and read this Julia code. The code below show a 2 meter long beam with load which increases from 0 at the fixed end to 1 kN/m at the end of the beam. Here&#39;s a diagram of the problem setup.</p>
 
-<pre><code class="julia hljs"><span class=hljs-keyword >using</span> ApproxFun, Plots
+<p>Full Code: <pre><code class="julia hljs"><span class=hljs-keyword >using</span> ApproxFun, Plots
 ° = <span class=hljs-literal >π</span>/<span class=hljs-number >180</span>;
 
 <span class=hljs-comment ># Setting up problem</span>
@@ -58,9 +58,7 @@ p3 = plot!(z, q/<span class=hljs-number >1000</span>, label=<span class=hljs-str
     legend=:bottomright)
 
 l = grid(<span class=hljs-number >3</span>, <span class=hljs-number >1</span>, heights=[<span class=hljs-number >0.2</span>, <span class=hljs-number >0.2</span> ,<span class=hljs-number >0.6</span>])
-plot(p1, p2, p3, layout=l,  lw = <span class=hljs-number >3</span>, 
-    size=(<span class=hljs-number >500</span>, <span class=hljs-number >900</span>), frame=:zerolines)</code></pre>
-
+plot(p1, p2, p3, layout=l,  lw = <span class=hljs-number >3</span>, size=(<span class=hljs-number >500</span>, <span class=hljs-number >900</span>), frame=:zerolines)</code></pre> <img src="/assets/scripts/output/beam_deflection_fig2a.svg" alt=""></p>
 <h2 id=next_steps ><a href="#next_steps" class=header-anchor >Next Steps</a></h2>
 <ul>
 <li><p>I would like to play around with more supporting and loading conditions. In particular, I want to figure out how to have a support in the middle of the beam. I believe I need to solve this problem piecewise when there are supports in the middle of the beam.</p>
@@ -71,7 +69,8 @@ plot(p1, p2, p3, layout=l,  lw = <span class=hljs-number >3</span>,
 
 </ul>
 <div class=page-foot >
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Braden Eliason. Last modified: April 07, 2024.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Braden Eliason. Last modified: June 02, 2024.
+    <br>
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
 </div>
 </div>
@@ -89,7 +88,7 @@ plot(p1, p2, p3, layout=l,  lw = <span class=hljs-number >3</span>,
             <li><a href="https://github.com/bradeneliason" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden=true ></i> GitHub</a>
           </ul>
         </div>
-        <div class=page__footer-copyright >&copy; Braden Eliason. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel=nofollow >Minimal Mistakes</a>.</div>
+        <div class=page__footer-copyright >&copy;2024 Braden Eliason. Powered by <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel=nofollow >Minimal Mistakes</a>.</div>
       </footer>
     </div>
 

@@ -1,1 +1,0 @@
-"/home/runner/work/bradeneliason.github.io/bradeneliason.github.io/__site/assets/blog/diagnostic_tests_02/code/output/fig2.png"
