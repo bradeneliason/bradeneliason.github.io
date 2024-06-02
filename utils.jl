@@ -254,6 +254,8 @@ TODO: add desc
   rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
   sort!(rpaths, by=get_date, rev=true)
 
+  @info "Delayed pages? $(Franklin.DELAYED)"
+
   # Find all posts and store as list of named tuples
   # postlist = []
   # for rpath in rpaths
@@ -328,12 +330,24 @@ end
 function post_list_from_paths(io, paths)
   write(io, """<ul class="post-list">""")
   for p in paths
-      date = get_date(p)
+    # @info p
+    date = pagevar(p, "date")
+    if isnothing(date)
+      @warn "Date at $p is nothing."
+      date_str = ""
+    else
       date_str = Dates.format.(date, "u-Y")
-      title = string(pagevar(p, "title"))
-      # link = "./" * split(p, "\\")[end] * "/" * "index.html"
-      url = get_url(p)
-      write(io, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
+    end 
+
+    title = pagevar(p, "title")
+    if isnothing(title)
+      title = titlecase(replace(last(split(p, "\\")), "_" => " "))
+      @warn "Title at $p is nothing. Resorting to default title: $title"
+    else
+      title = string(title)
+    end
+    url = get_url(p)
+    write(io, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
   end
   write(io, "</ul>")
   return io
