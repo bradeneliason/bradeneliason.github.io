@@ -252,28 +252,33 @@ TODO: add desc
   io = IOBuffer()
   mdfilelist = readdir("blog")
   rpaths = mdfile_to_rpath.(filter(f -> endswith(f, ".md"), mdfilelist))
+  sort!(rpaths, by=get_date, rev=true)
 
   # Find all posts and store as list of named tuples
-  postlist = []
-  for rpath in rpaths
-    title = pagevar(rpath, "title")
-    if isnothing(title)
-      title = titlecase(replace(last(split(rpath, "\\")), "_" => " "))
-      @warn "Title at $rpath is nothing. Resorting to default title: $title"
-    end
-    date = get_date(rpath)
-    date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
-    url = get_url(rpath)
-    push!(postlist, (;rpath, date, title, date_str, url))
-  end
-  sort!(postlist, by = x -> x.date, rev=true)
+  # postlist = []
+  # for rpath in rpaths
+  #   title = pagevar(rpath, "title")
+  #   if isnothing(title)
+  #     title = titlecase(replace(last(split(rpath, "\\")), "_" => " "))
+  #     @warn "Title at $rpath is nothing. Resorting to default title: $title"
+  #   end
+  #   date = get_date(rpath)
+  #   date_str = isnothing(date) ? "" : Dates.format.(date, "u-Y")
+  #   url = get_url(rpath)
+  #   push!(postlist, (;rpath, date, title, date_str, url))
+  # end
+  # sort!(postlist, by = x -> x.date, rev=true)
 
-  # Write sorted output to with styled HTML
-  write(io, """<ul class="post-list">""")
-  for p in postlist
-    write(io, """<li><a class="post-title" href="$(p.url)">$(p.title)</a><span class="post-date">$(p.date_str)</span></li>\n""")
-  end
-  write(io, "</ul>")
+  # # Write sorted output to with styled HTML
+  # write(io, """<ul class="post-list">""")
+  # for p in postlist
+  #   write(io, """<li><a class="post-title" href="$(p.url)">$(p.title)</a><span class="post-date">$(p.date_str)</span></li>\n""")
+  # end
+  # write(io, "</ul>")
+  # return String(take!(io))
+
+  io = IOBuffer()
+  post_list_from_paths(io, rpaths)
   return String(take!(io))
 end
 
@@ -326,8 +331,9 @@ function post_list_from_paths(io, paths)
       date = get_date(p)
       date_str = Dates.format.(date, "u-Y")
       title = string(pagevar(p, "title"))
-      link = "./" * split(p, "\\")[end] * "/" * "index.html"
-      write(io, """<li><a class="post-title" href="$link">$title</a><span class="post-date">$date_str</span></li>\n""")
+      # link = "./" * split(p, "\\")[end] * "/" * "index.html"
+      url = get_url(rpath)
+      write(io, """<li><a class="post-title" href="$url">$title</a><span class="post-date">$date_str</span></li>\n""")
   end
   write(io, "</ul>")
   return io
