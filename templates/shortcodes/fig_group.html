@@ -1,0 +1,5 @@
+<div class="fig-group">
+{%- for src in srcs %}
+  <img src="{{ get_url(path=page.path ~ src) }}" alt="{{ alts[loop.index0] | default(value='') }}">
+{%- endfor %}
+</div>

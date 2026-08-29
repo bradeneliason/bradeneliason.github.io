@@ -1,0 +1,71 @@
+base_url = "https://bradeneliason.com"
+
+title = "Braden Eliason"
+author = "Braden Eliason"
+description = "Braden Eliason's personal blog and résumé — engineer, inventor, designer, entrepreneur."
+
+theme = "vonge"
+
+compile_sass = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+minify_html = true
+build_search_index = false
+
+taxonomies = [
+    { name = "tags", feed = true },
+]
+
+[extra]
+logo_image = "images/logos/BE_logo_WHT_600x600.png"
+social_media_share_image = "/images/braden_mountains.jpg"
+disqus_identifier = ""
+google_analytics = ""
+twitter_handle = ""
+
+author_image = "/images/braden_mountains.jpg"
+
+navigation = [
+    { url = "$BASE_URL", title = "Home" },
+    { url = "$BASE_URL/blog", title = "Blog" },
+    { url = "$BASE_URL/resume", title = "Résumé" },
+]
+
+social_icons = [
+    { url = "https://github.com/bradeneliason", icon = "GitHub" },
+    { url = "https://www.linkedin.com/in/bradeneliason/", icon = "LinkedIn" },
+    { url = "$BASE_URL/atom.xml", icon = "RSS" },
+]
+
+date_format = "%d %b %Y"
+language_direction = "auto"
+keywords = ["Braden Eliason", "engineering", "biomedical engineering", "Julia", "blog", "resume"]
+
+[extra.footer]
+menu = [
+    { url = "$BASE_URL", title = "Home" },
+    { url = "$BASE_URL/blog", title = "Blog" },
+    { url = "$BASE_URL/resume", title = "Résumé" },
+]
+
+[[extra.content_blocks]]
+block = "hero"
+title = "Hi, I'm Braden Eliason"
+description_html = "I'm an <strong>engineer, inventor, designer, entrepreneur</strong>, and all-around nerd based in Munich, Germany."
+image = "/images/braden_mountains.jpg"
+image_alt = "Braden Eliason"
+cta_button_link = "/resume"
+cta_button = "See my résumé"
+works_button_link = "/blog"
+works_button = "Read my blog"
+
+[[extra.content_blocks]]
+block = "blog-section"
+title = "Recent Posts"
+description_html = "<p>Notes on engineering, Julia, CAD, and other projects.</p>"
+link_url = "/blog"
+show_posts = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
