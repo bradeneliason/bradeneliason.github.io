@@ -25,8 +25,6 @@ The numbers for this example come from an open-access article.[^1]
  * 30% of people without the disease will be correctly identified as being healthy ("Specificity" or $Sp$)
 
 If we give the screening test to 10,000 people, we would expect the following results:
-
-<!-- TODO: Fix table layout -->
 	
 |                   | Have Condition      | Healthy              | Row Totals |
 |------------------:|:--------------------|:---------------------|-----------:|

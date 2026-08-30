@@ -9,10 +9,6 @@ tags = ["Julia"]
 image = "/blog/light-transport-01/light_transport_01_fig1.gif"
 +++
 
-<!-- # Monte Carlo Light Transport -->
-
-<!-- TODO: Simulation of energy accumulating in a turbid volumeSimulation of energy accumulating in a turbid volume -->
-
 ![Monte Carlo light transport animation](light_transport_01_fig1.gif)
 
 Monte Carlo methods are a class of algorithms that rely on random sampling to generate a result. These methods can obtain results for both random and deterministic processes. For example, the value of $\pi$ is deterministic, but by sampling random points within a square and testing if they fall within a circle you can estimate the value of $\pi$ (albeit quite slowly). For random processes like light scattering, Monte Carlo methods are a natural choice and can be quite versatile.
@@ -32,5 +28,3 @@ I'm really pleased with the resulting plots. There are certainly more succinct a
 ![3D volume slices](light_transport_01_fig3.png)
 
 ![3D volume perspective](light_transport_01_fig4.png)
-
-<!-- TODO: A 3D plot of the light energy distribution -->

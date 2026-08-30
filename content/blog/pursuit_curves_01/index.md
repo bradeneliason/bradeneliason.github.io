@@ -62,7 +62,6 @@ pursuitplot(sol.t, pursued.(sol.t), label="Rabbit")
 pursuitplot!(sol.t, sol.u, color=:tomato2, label="Fox")
 ```
 
-<!-- TODO: missing image for figure 1a: "Animation: Rabbit running in a circle" -->
 ![Animation: Rabbit running in a circle](pursuit_curves_01_fig1b.gif)
 
 
@@ -79,6 +78,5 @@ pursuitplot(sol.t, pursued.(sol.t), label="Rabbit")
 pursuitplot!(sol.t, sol.u, color=:tomato2, label="Fox")
 ```
 
-<!-- TODO: missing image for figure 2a: "Rabbit Running in a Line" -->
 ![Animation: Rabbit Running in a Line](pursuit_curves_01_fig2b.gif)
 

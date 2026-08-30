@@ -30,7 +30,6 @@ sol = solve(prob, saveat=0.1);
 
 pursuitplot(sol.t, pursued.(sol.t), label="Rabbit")
 pursuitplot!(sol.t, sol.u, label="Fox")
-# savefig(joinpath(@OUTPUT, "pursuit_curves_01_a.png")) # hide
 
 
 ## Rabbit Running in a Line
@@ -42,4 +41,3 @@ sol = solve(prob, saveat=0.1);
 
 pursuitplot(sol.t, pursued.(sol.t), label="Rabbit")
 pursuitplot!(sol.t, sol.u, label="Fox")
-# savefig(joinpath(@OUTPUT, "pursuit_curves_01_b.png")) # hide

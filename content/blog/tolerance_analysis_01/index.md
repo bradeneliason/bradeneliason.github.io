@@ -80,8 +80,6 @@ b = 3.8 ± 0.4;
 ```julia
 2a + b = 12.8 ± 0.45
 ```
-<!-- TODO: -->
-<!-- \output{./code/blender_dithering_01_ex1} -->
 
 [Measurements.jl](https://github.com/search?q=Measurements.jl&type=Repositories) is a package in Julia that takes care of uncertainty propagation for you. Values with uncertainty can be specified with `±`, as we would hope. In this case, the `±` symbol is a custom infix operator that creates a new type called a Measurement. Through the unreasonable effectiveness of multiple dispatch, [Measurements.jl](https://github.com/search?q=Measurements.jl&type=Repositories) extends the basic operations of Julia, so all calculations done on a Measurement will look the same as if they were just a float. More details about [Measurements.jl](https://github.com/search?q=Measurements.jl&type=Repositories) can be found in the package documentation. Here is a basic example of how [Measurements.jl](https://github.com/search?q=Measurements.jl&type=Repositories) works:
 
@@ -97,8 +95,6 @@ dim2 = 25 ± 0.1;
 ```julia
 dim1 + dim2 = 65.0 ± 0.51
 ```
-<!-- TODO: -->
-<!-- \output{./code/blender_dithering_01_ex2} -->
 
 Consider our simple example above. The following code is able to replicate the statistical tolerance analysis method without the hassle. There's no special methods to call. The complexities of propagating uncertainty though addition are handled by extending the definition of addition to quantities with uncertainty. 
 
@@ -154,8 +150,6 @@ Once all the vectors are defined, determining Z is easy. Z is just a vector deri
 ```julia
 norm(Z) = 160.26 ± 0.24
 ```
-<!-- TODO: -->
-<!-- \output{./code/blender_dithering_01_ex3} -->
 
 ## Wrapping Up
 

@@ -16,6 +16,5 @@ I made an experimental [Pluto.jl](https://github.com/search?q=Pluto.jl&type=Repo
 Currently this project is just a prototype which you can view and download on my Github: PlutoGraphViz. There are many features of Cytoscape which I have not implemented yet. If you found this project interesting, leave me a star on Github.
 
 ## Animated Demo
-<!-- TODO: Image -->
 
 ![Interactive demo of graph visualization](pluto_graphviz_01_fig1.gif)
