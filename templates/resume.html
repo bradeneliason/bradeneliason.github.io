@@ -78,7 +78,7 @@
     <h2 class="resume__section-title">Patents &amp; Applications</h2>
     <ol class="resume__patents">
       {% for patent in page.extra.patents %}
-      <li>{{ patent.title }} &mdash; <em>({{ patent.number }})</em></li>
+      <li>{{ patent.title }} &mdash; <em>({{ patent.number }}{% if patent.filed %}, filed {{ patent.filed }}{% endif %})</em></li>
       {% endfor %}
     </ol>
     {% endif %}
