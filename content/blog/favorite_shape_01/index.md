@@ -21,11 +21,11 @@ It looks similar to some of the earliest tools humans made, the Acheulean hand a
 
 Many of these early tools resemble the Euler's figure-eight. In particular cordiform (heart-shaped) and amygdaloidal (almond-shaped).
 
-Many such hand axes where crafted to a great degree of precision and symmetry. This has led many to wonder if these axes were works of art in addition to being useful tools.
+Many such hand axes were crafted to a great degree of precision and symmetry. This has led many to wonder if these axes were works of art in addition to being useful tools.
 
 ## Math
 
-The mathematical formulation for solving for this shape is somewhat long. Since other's have discuss the solution at great length and for brevity I'll simply place the paramerizied solution here.
+The mathematical formulation for solving for this shape is somewhat long. Since others have discussed the solution at great length and for brevity I'll simply place the parameterized solution here.
 
 
 $$ x=a \sqrt{k+\cos t} $$
@@ -51,28 +51,28 @@ savefig(joinpath(@__DIR__, "output", "favorite_shape_01_fig2.png"))
 
 ## Elastica - Elastic Curves
 
-If take an elastic strip and curl it around so that the ends meet, it makes half of Euler's figure-eight. This shape minimizes the total curvature of while still allowing the line to meet up end-to-end.
+If take an elastic strip and curl it around so that the ends meet, it makes half of Euler's figure-eight. This shape minimizes the total curvature while still allowing the line to meet up end-to-end.
 
-This shape is just one curve belonginging to a family of curves called elastica or elastic curves. The study of elastic curves has puzzled the minds of many famous mathematicians, notably Galilieo, Bernoulli, and Euler. Euler built on the analysis of Bernoulli and was able to characterize this family of curves completely.
+This shape is just one curve belonging to a family of curves called elastica or elastic curves. The study of elastic curves has puzzled the minds of many famous mathematicians, notably Galileo, Bernoulli, and Euler. Euler built on the analysis of Bernoulli and was able to characterize this family of curves completely.
 
 ![Elastic Curves](favorite_shape_01_fig3.png)
 
 ## Lintearia - Water in a tarp
 
-It turns out that there is another example in physics which produces this curve called lintearia (from the Latin for linen). Imagine taking a length of tarp and securing the ends to horizontal bars at the same height. Fill the tarp with water up to the bars. Imagine for a moment that the sides are capped magically or that the caps are sufficiently far away to not effect the behavior at the center of the tarp.
+It turns out that there is another example in physics which produces this curve called lintearia (from the Latin for linen). Imagine taking a length of tarp and securing the ends to horizontal bars at the same height. Fill the tarp with water up to the bars. Imagine for a moment that the sides are capped magically or that the caps are sufficiently far away to not affect the behavior at the center of the tarp.
 
-Without the water, the tarp would form a centenary curve. When you fill the tarp with water, the water pressure pushes outwards against the tarp. Importantly, the water pressure increases with depth causing the tarp to bulge out at the bottom. If the bars are drawn together, the shape created is half of Euler's figure-eight.
+Without the water, the tarp would form a catenary curve. When you fill the tarp with water, the water pressure pushes outwards against the tarp. Importantly, the water pressure increases with depth causing the tarp to bulge out at the bottom. If the bars are drawn together, the shape created is half of Euler's figure-eight.
 
 ![Lintearia](favorite_shape_01_fig4.png)
 
 ## Similar Curves
 
-I'd be remiss ended this article without mentioning some very similar curves.
+I'd be remiss to end this article without mentioning some very similar curves.
 
  * [The lemniscate of Bernoulli](https://mathcurve.com/courbes2d.gb/lemniscate/lemniscate.shtml)
  * [The convict curve](https://mathcurve.com/courbes2d.gb/syntractrice/syntractrice.shtml)
 
 ## References:
 
- * [Mathcurve.com INTEARIA](https://mathcurve.com/courbes2d.gb/chainette/bachette.shtml)
+ * [Mathcurve.com LINTEARIA](https://mathcurve.com/courbes2d.gb/chainette/bachette.shtml)
  * [Mathcurve.com ELASTIC CURVE](https://mathcurve.com/courbes2d.gb/linteaire/linteaire.shtml)

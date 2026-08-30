@@ -24,7 +24,7 @@ The electrical behavior of a cell is not dictated by the flow of electrons. Inst
 
 ## Transfer Rate Coefficients
 
-In their model, there were three different activating particles: n, m, and h. The particles jump from their inactive state to their active state at a rate of $\alpha$. Similarly they become inactive again at a rate of $\beta$. Hodgkin and Huxley determined how these transfer rates changed as a function the membrane voltage (or more accurately the difference between the membrane voltage and the resting potential). The particle kinetics and governing differential equation are shown below:
+In their model, there were three different activating particles: n, m, and h. The particles jump from their inactive state to their active state at a rate of $\alpha$. Similarly they become inactive again at a rate of $\beta$. Hodgkin and Huxley determined how these transfer rates changed as a function of the membrane voltage (or more accurately the difference between the membrane voltage and the resting potential). The particle kinetics and governing differential equation are shown below:
 
 ### Kinetics:
 
@@ -122,7 +122,7 @@ sol = solve(prob, saveat=0.01);
 p1 = plot(
     sol.t, sol[4,:], 
     legend=false, 
-    ylabel="Volatge [mV]"
+    ylabel="Voltage [mV]"
 )
 p2 = plot(
     sol.t, I_inj.(sol.t), 
@@ -145,7 +145,6 @@ plot(
     size=(600,600), 
     lw=3
 )
-savefig(joinpath(@OUTPUT, "fig2.png")) # hide
 ```
-<!-- TODO: -->
-<!-- TODO: missing image for figure 2: "Simulated neuron results. The light blue curve indicataes the voltage acorss the cell membrane. The red curve is the injected current stimulus that causes the simulated cell to depolarize. The blue, orange, and green curve show the dynamics of the activating particles." -->
+
+![Simulated neuron results. The light blue curve indicates the voltage across the cell membrane. The red curve is the injected current stimulus that causes the simulated cell to depolarize. The blue, orange, and green curve show the dynamics of the activating particles.](hodkin_huxley_01_fig2.png)

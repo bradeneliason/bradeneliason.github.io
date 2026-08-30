@@ -14,7 +14,7 @@ This started as a challenge on the Julia Discourse website to come up with a com
 
 ## The Problem
 
-[ApproxFun.jl](https://github.com/search?q=ApproxFun.jl&type=Repositories) is well suited to finding the solutions of ordinary differential equations (ODEs) with boundary conditions. One application for this is solving beam deflection under various loading conditions. As a test case, here's a simple beam deflection problem: a cantilevered beam with uniform loading. The beam has length, L, and it's stiffness is determined by both the elastic modulus, E, and the moment of inertia, I.
+[ApproxFun.jl](https://github.com/search?q=ApproxFun.jl&type=Repositories) is well suited to finding the solutions of ordinary differential equations (ODEs) with boundary conditions. One application for this is solving beam deflection under various loading conditions. As a test case, here's a simple beam deflection problem: a cantilevered beam with uniform loading. The beam has length, L, and its stiffness is determined by both the elastic modulus, E, and the moment of inertia, I.
 
 ![Uniformly loaded cantilever beam](beam_deflection_01_fig1.png)
 
@@ -28,7 +28,7 @@ d = 0..L
 z = Fun(identity, d)
 B = [[Evaluation(d,0,k) for k=0:1]... ; [Evaluation(d,L,k) for k=2:3]... ;]
 v = [B; E*I*Derivative()^4] \ [ zeros(4)...; one(z)]
-func_name = zip([v, v', v'', v'''], ["Deflection", "Angle", "Momement", "Shear"])
+func_name = zip([v, v', v'', v'''], ["Deflection", "Angle", "Moment", "Shear"])
 plot([plot(z, f, title=n, label="") for (f,n) in func_name]..., lw=3)
 ```
 
@@ -60,10 +60,10 @@ The solution is generated on the next line. The boundary conditions, B, are all 
 v = [B; E*I*Derivative()^4] \ [ zeros(4)..., one(z)]
 ```
 
-These two lines plot the results. I've zipped together the solution and it's derivatives with their corresponding labels. The last line uses list comprehension to plot the results. Note: I wouldn't typically use syntax like this for plotting but I had to fit this whole thing into seven lines. A little bit of clarity went out the window.
+These two lines plot the results. I've zipped together the solution and its derivatives with their corresponding labels. The last line uses list comprehension to plot the results. Note: I wouldn't typically use syntax like this for plotting but I had to fit this whole thing into seven lines. A little bit of clarity went out the window.
 
 ```julia
-func_name = zip([v, v', v'', v'''], ["Deflection", "Angle", "Momement", "Shear"])
+func_name = zip([v, v', v'', v'''], ["Deflection", "Angle", "Moment", "Shear"])
 plot([plot(z, f, title=n, label="") for (f,n) in func_name]..., lw=3)
 ```
 
@@ -107,7 +107,7 @@ p1 = plot(z, 1000v, legend=:none,
 p2 = plot(z, θ, legend=:none, 
     title="Angle [°]", lc=:orange)
 
-plot(z, M/1000, label="Momement [kN⋅m]",
+plot(z, M/1000, label="Moment [kN⋅m]",
     fill = (0, 0.15, :blue),  lc=:blue)
 plot!(z, V/1000, label="Shear [kN]",
     fill = (0, 0.15, :green), lc=:green)

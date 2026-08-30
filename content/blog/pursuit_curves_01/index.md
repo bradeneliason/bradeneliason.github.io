@@ -14,7 +14,7 @@ Imagine the path of a fox chasing a rabbit. A simple pursuit strategy (but by no
 
 [View the full Julia source for this post](pursuit_curves_01.jl)
 
-The position of the rabbit through time is the vector $R(t)$, and the position of the fox through time is the vector $F(t)$. For the sake of simplicity, the rabbit takes a predefined trajectory and has a constant speed of 1. The fox's speed is some multiple, $k$, of the rabbit's speed. The governing differential equation of this pursuit curve is below. The differential equation is tell us that every instant in time, we are updating the fox's velocity, $F'$, to point in the direction of the rabbit. The unit vector pointing from the fox and to the rabbit is $R-F/|R-F|$. We scale this unit vector by the fox's speed (simplified to just $k$) to get an equation of for the fox velocity vector at any instant in time.
+The position of the rabbit through time is the vector $R(t)$, and the position of the fox through time is the vector $F(t)$. For the sake of simplicity, the rabbit takes a predefined trajectory and has a constant speed of 1. The fox's speed is some multiple, $k$, of the rabbit's speed. The governing differential equation of this pursuit curve is below. The differential equation tells us that every instant in time, we are updating the fox's velocity, $F'$, to point in the direction of the rabbit. The unit vector pointing from the fox and to the rabbit is $R-F/|R-F|$. We scale this unit vector by the fox's speed (simplified to just $k$) to get an equation for the fox velocity vector at any instant in time.
 
 $$ \left| R' \right| \equiv 1 $$
 
@@ -26,7 +26,7 @@ $$ F' = \frac{k(R-F)}{\left| R-F \right|} $$
 
 ## Setup
 
-I'm defining a custom plotting recipe in Julia. This creates the plots seen below containing a lines with trailing widths. The last line of this code block shouldn't be ignored. This single line defines the differential equation which governs the path of the fox. It takes the function pursued (the path that the rabbit takes) and spits out the velocity vector of the fox.
+I'm defining a custom plotting recipe in Julia. This creates the plots seen below containing lines with trailing widths. The last line of this code block shouldn't be ignored. This single line defines the differential equation which governs the path of the fox. It takes the function pursued (the path that the rabbit takes) and spits out the velocity vector of the fox.
 
 ```julia
 using Plots
@@ -60,7 +60,6 @@ sol = solve(prob, saveat=0.1);
 
 pursuitplot(sol.t, pursued.(sol.t), label="Rabbit")
 pursuitplot!(sol.t, sol.u, color=:tomato2, label="Fox")
-savefig(joinpath(@OUTPUT, "fig1a.png")) # hide
 ```
 
 <!-- TODO: missing image for figure 1a: "Animation: Rabbit running in a circle" -->
@@ -78,7 +77,6 @@ sol = solve(prob, saveat=0.1);
 
 pursuitplot(sol.t, pursued.(sol.t), label="Rabbit")
 pursuitplot!(sol.t, sol.u, color=:tomato2, label="Fox")
-savefig(joinpath(@OUTPUT, "fig2a.png")) # hide
 ```
 
 <!-- TODO: missing image for figure 2a: "Rabbit Running in a Line" -->

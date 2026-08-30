@@ -13,13 +13,13 @@ I wanted to create a 3D render which emulated the retro video game aesthetic. To
 
 ## What is Dithering?
 
-Dithering an image is adding noise to it. Typically we want as little noise in an image as possible, so why would we want to add noise? Early computer displays had a limited number of colors that could be displayed. If you wanted to smoothly blend one color into another, this limited color palette would result in blocks colors with large jumps between colors. This is is know as color banding. This color banding is the visual result of quantization error. Quantization error occurs when a smoothly varying input value is rounded to a limited number of output levels.
+Dithering an image is adding noise to it. Typically we want as little noise in an image as possible, so why would we want to add noise? Early computer displays had a limited number of colors that could be displayed. If you wanted to smoothly blend one color into another, this limited color palette would result in blocks colors with large jumps between colors. This is known as color banding. This color banding is the visual result of quantization error. Quantization error occurs when a smoothly varying input value is rounded to a limited number of output levels.
 
 Images with this color banding are accurate at the pixel level. That is, every pixel is displayed with the color as close to the original as possible (minimal pixel quantization error). But this per-pixel accuracy often results in very ugly images. Instead consider treating a block of pixels as a unit instead of the single pixel. We perceive the average of a block of pixels and this pixel grouping allows for more possible perceived gradations. The dithered gradient in the image below is composed of only black and white pixels, but the blocks of pixels are perceived as gradations of grey. So while dither causes the quantization error of the image to increase at the pixel level, the result is perceived as closer to the input gradient. Thus dithering is adding noise to an image in such a way that it reduces the perceptual cost of quantization errors.
 
 ![Ordered Dithering](blender_dithering_01_fig1.png)
 
-There are two way to think about this dithering noise: adding noise and then rounding or having a different threshold across a block of pixels. To dither a block of pixels we can add a block of noise and round up and down with a threshold of 50%. The noise we add is set up so that a block of 50% grey pixels would have half its pixels rounded up to white and half its pixels rounded down to black. Similarly, a block of 25% percent grey would have noise added such that rounding with a 50% threshold results in about 25% of the pixels being white. The other way to think about this having a different threshold for each pixel within a block. These methods are equivalent, but I wanted to make it clear that the threshold matrices that I am creating below have the effect of adding noise.
+There are two ways to think about this dithering noise: adding noise and then rounding or having a different threshold across a block of pixels. To dither a block of pixels we can add a block of noise and round up and down with a threshold of 50%. The noise we add is set up so that a block of 50% grey pixels would have half its pixels rounded up to white and half its pixels rounded down to black. Similarly, a block of 25% grey would have noise added such that rounding with a 50% threshold results in about 25% of the pixels being white. The other way to think about this having a different threshold for each pixel within a block. These methods are equivalent, but I wanted to make it clear that the threshold matrices that I am creating below have the effect of adding noise.
 
 ## Dithering Matrices
 
@@ -54,15 +54,15 @@ I created a quick function in Julia to create different threshold maps. These th
 
 ## Blender Compositing with Dithering
 
-Below are two images of the default Blender monkey Suzanne with and without dithering. The image on the left has no dithering, so any pixel above the threshold of 50% grey is set to white. The image on the right is still composes of only black and white pixels, but the dither produces the appearance of fine gradations of grey. I added a rendering pass to draw lines around certain contours of the model to give the model more form and produce a retro line art and shading appearance.
+Below are two images of the default Blender monkey Suzanne with and without dithering. The image on the left has no dithering, so any pixel above the threshold of 50% grey is set to white. The image on the right is still composed of only black and white pixels, but the dither produces the appearance of fine gradations of grey. I added a rendering pass to draw lines around certain contours of the model to give the model more form and produce a retro line art and shading appearance.
 
 {{ fig_group(srcs=["blender_dithering_01_fig3a.png", "blender_dithering_01_fig3b.png"], alts=["Without Dithering", "With Dithering"]) }}
 
 ## Send Nodes
 
-Here are the Blender image compositor node setup for to produce the results above.
+Here is the Blender image compositor node setup used to produce the results above.
 
-![Bledner node](blender_dithering_01_fig4.png)
+![Blender node](blender_dithering_01_fig4.png)
 
 ![Node Group](blender_dithering_01_fig5.png)
 

@@ -24,4 +24,4 @@ Here's a quick experiment with a non-photorealistic rendering (NPR) of a heart u
 
 ![Intaglio printing](blender_npr_01_fig3.jpg)
 
-Inspriation for this project came from the Blender NPR YouTube channel and Blender community. This is very much a work in progress. I am working on gaining greater control over the line direction.
+Inspiration for this project came from the Blender NPR YouTube channel and Blender community. This is very much a work in progress. I am working on gaining greater control over the line direction.

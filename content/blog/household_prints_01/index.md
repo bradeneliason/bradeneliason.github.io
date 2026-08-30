@@ -9,7 +9,7 @@ tags = ["3D Printing"]
 image = "/blog/household-prints-01/household_prints_01_fig1.jpg"
 +++
 
-This is a catch-all post for various 3D printing projects that I've done around the house. None of these prints really warrants a post by themselves, but they were rewarding projects worthy of sharing in some form nonetheless.
+This is a catch-all post for various 3D printing projects that I've done around the house. None of these prints really warrant a post by themselves, but they were rewarding projects worthy of sharing in some form nonetheless.
 
 ## TV Lift
 
@@ -21,7 +21,7 @@ I placed a soundbar in front of my TV. The speaker ended up being just high enou
 
 ![3D printed drawer organizers](household_prints_01_fig2.jpg)
 
-3D Printing is very enjoyable; organizing drawers is not. Solution: 3D print your own modular drawer organizers. The design was done by me, but it was inspired by the organization bins designed by Alexandre Chappel. The have a base dimension of 50 mm. The image on the right is a 2×2×1 bin. The tab at the front has a recess which is wide enough for a $\frac{1}{4}"$ wide label. Print files available here.
+3D Printing is very enjoyable; organizing drawers is not. Solution: 3D print your own modular drawer organizers. The design was done by me, but it was inspired by the organization bins designed by Alexandre Chappel. They have a base dimension of 50 mm. The image on the right is a 2×2×1 bin. The tab at the front has a recess which is wide enough for a $\frac{1}{4}"$ wide label. Print files available here.
 
 {{ fig_group(srcs=["household_prints_01_fig3a.png", "household_prints_01_fig3b.png", "household_prints_01_fig3c.png"], alts=["1x1 drawer organizers", "1x3 drawer organizers", "2x2 drawer organizers"]) }}
 

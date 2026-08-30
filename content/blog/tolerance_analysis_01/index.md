@@ -20,7 +20,7 @@ This project started when I was reviewing the Excel engineering calculators foun
 
 If you are making only a few parts and assembling the parts yourself, make the parts to fit. If you watch a master woodworker, they'll often use layout calipers or use one piece to mark another (i.e. relative dimensioning). If there's another party involved in the manufacturing or you are making many parts, you need to consider the tolerances of your dimension. Dimensions and tolerances are a way to communicate intent. There are several different ways a dimension may be presented on the drawing of a part:
 
- 1. **Limit of size** — This type of tolerance lists two dimensions: the smallest and the largest acceptable dimension. The dimension are either written from smallest to largest left-to-right, or the larger dimension is on top of the smaller dimension.
+ 1. **Limit of size** — This type of tolerance lists two dimensions: the smallest and the largest acceptable dimension. The dimensions are either written from smallest to largest left-to-right, or the larger dimension is on top of the smaller dimension.
  1. **Equal bilateral form** — This is the type of tolerance *most people are familiar with*. The dimension has a nominal value followed by the acceptable variation. The dimension may be larger or smaller by equal amounts.
  1. **Unequal bilateral form** — Like the equal bilateral form, the dimension has a nominal value followed by the acceptable variation, but in this case the variation is not symmetrical. The dimension may be larger or smaller on either side by a different amount.
  1. **Unilateral form** — In this case the dimension is only allowed to be either larger or smaller than the nominal dimension.
@@ -39,13 +39,13 @@ In general, use equal bilateral tolerance, but there are exceptions to that rule
 
 Tolerance analysis is the process of calculating how error might accumulate in dimensions with tolerances. There are two main ways to calculate tolerance: worst-case analysis and statistical analysis.
 
-Worst-case analysis is just what it sounds like: you consider each dimension at its largest and smallest acceptable values and you calculate the upper and lower bounds for the combined dimensions. Since most manufacturing processes will produce real dimensions following a normal distribution, it's extremely unlikely that anything close to the worst-case scenario will come true. The power of the worst-case analysis is in its simplicity. It boils down to just adding up the dimensions twice: once for the lower limit dimensions and again for the the upper limit dimensions.
+Worst-case analysis is just what it sounds like: you consider each dimension at its largest and smallest acceptable values and you calculate the upper and lower bounds for the combined dimensions. Since most manufacturing processes will produce real dimensions following a normal distribution, it's extremely unlikely that anything close to the worst-case scenario will come true. The power of the worst-case analysis is in its simplicity. It boils down to just adding up the dimensions twice: once for the lower limit dimensions and again for the upper limit dimensions.
 
 Statistical tolerance analysis is much more powerful. Instead of assuming each part is at the limits of its acceptable variation, statistical tolerance analysis assumes each dimension is sampled from a statistical distribution. For the sake of simplicity, we'll assume that each dimension is sampled from a normal distribution centered on the nominal dimension and that the tolerance represents three times the standard deviation ($3\sigma$ on either side for a total of $6\sigma$). When we assume the dimensions are normal distributions, we can use the root sum squared (RSS) method to combine their tolerances as standard deviations.
 
 Note: Not all manufacturing processes will produce dimensions with a normal distribution. The methods to calculate the tolerance stack-up get more complicated; special software has been developed to deal with these cases. I plan to look into various probabilistic programming packages in Julia ([Soss.jl](https://github.com/search?q=Soss.jl&type=Repositories), [Turing.jl](https://github.com/search?q=Turing.jl&type=Repositories), and [Gen.jl](https://github.com/search?q=Gen.jl&type=Repositories)) to see if they can be used for this type of tolerance analysis.
 
-Consider the simple case of stacking two parts on together.
+Consider the simple case of stacking two parts together.
 
  * The left, purple part has a dimension of $40 \pm 0.5 mm$.
  * The right, blue part has a dimension of $25 \pm 0.1 mm$.
@@ -71,7 +71,7 @@ These processes are not terribly complicated for simple geometries, but the comp
 ## Measurements.jl
 
 ```julia
-using Measurements #hide
+using Measurements
 a = 4.5 ± 0.1;
 b = 3.8 ± 0.4;
 @show 2a + b
@@ -88,7 +88,7 @@ b = 3.8 ± 0.4;
 ## Tolerance Analysis with Measurements.jl
 
 ```julia
-using Measurements #hide
+using Measurements
 dim1 = 40 ± 0.5;
 dim2 = 25 ± 0.1;
 @show dim1 + dim2
@@ -119,12 +119,12 @@ $$ Y=(C-E) \cdot \sin (A)+G \cdot \cos (A)-F $$
 
 $$ Z=\sqrt{X^{2}+Y^{2}} $$
 
-Ignore those equations. **There's an easier way.** Performing statistical tolerance analysis on this part becomes trivial with [Measurments.jl](https://github.com/search?q=Measurments.jl&type=Repositories). Simply define each of the dimensions as a vector. For example, dimension $F$ is really a vector with a Measurement for one of its values:
+Ignore those equations. **There's an easier way.** Performing statistical tolerance analysis on this part becomes trivial with [Measurements.jl](https://github.com/search?q=Measurements.jl&type=Repositories). Simply define each of the dimensions as a vector. For example, dimension $F$ is really a vector with a Measurement for one of its values:
 
 $$ F = \begin{bmatrix}0 \\44.95 \pm 0.05\end{bmatrix} $$
 
 ```julia
-using Pkg; Pkg.add("Measurements") #hide
+using Pkg; Pkg.add("Measurements")
 using Measurements, LinearAlgebra
 
 # Define the degree symbol to convert from degree to radians

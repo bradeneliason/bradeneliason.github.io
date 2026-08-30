@@ -16,7 +16,7 @@ My first prototype adapter
 
 I have a set of Moment lenses for my phone that attach via a bayonet mount to a specialized case. My first iteration of an adapter consisted of just the mounting feature attached to a cone. The base of the adapter fits around the microscope eyepiece and can be locked into place with three screws.
 
-As many engineers know, CAD designs live in a universe devoid of scale, gravity, and the nuisance of manufacturing limitations. This adapter was to live at the top of the microscope with the screen of my phone pointing upwards. In this orientation, the weight of my phone would torque on the small printed tabs of the adapter. The solution was to prints supports which braced against the back of my phone. The supports lower the amount of force applied to the mounting tabs and prevents them from breaking.
+As many engineers know, CAD designs live in a universe devoid of scale, gravity, and the nuisance of manufacturing limitations. This adapter was to live at the top of the microscope with the screen of my phone pointing upwards. In this orientation, the weight of my phone would torque on the small printed tabs of the adapter. The solution was to print supports which braced against the back of my phone. The supports lower the amount of force applied to the mounting tabs and prevents them from breaking.
 
 ![Close up of first prototype](microscope_adapter_01_fig1.jpg)
 

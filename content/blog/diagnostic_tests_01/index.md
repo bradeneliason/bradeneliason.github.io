@@ -12,11 +12,11 @@ image = "/blog/diagnostic-tests-01/diagnostic_tests_01_fig1.png"
 
 <!-- # Diagnostic Tests, Visualized -->
 
-Diagnostic test are invaluable tools in our medical arsenal, but they are not without pitfalls. These tests can be used to identify diseases in their early states or eliminate competing diagnoses to find the correct treatment course. However, no test is perfect. When a health person receives a positive result, this can result in anxiety, additional (often invasive) tests, and occasionally misdiagnosis/over-treatment.
+Diagnostic tests are invaluable tools in our medical arsenal, but they are not without pitfalls. These tests can be used to identify diseases in their early states or eliminate competing diagnoses to find the correct treatment course. However, no test is perfect. When a healthy person receives a positive result, this can result in anxiety, additional (often invasive) tests, and occasionally misdiagnosis/over-treatment.
 
 ## Let's look at an example:
 
-The numbers for this example come from and open-access article.[^1]
+The numbers for this example come from an open-access article.[^1]
 
 
 
@@ -32,19 +32,19 @@ If we give the screening test to 10,000 people, we would expect the following re
 |------------------:|:--------------------|:---------------------|-----------:|
 | **Positive Test** | 4500 True Positive  | 3500 False Negative  | 8000       |
 | **Negative Test** | 500  False Negative | 1500 True Negative   | 2000       |
-| **Column Totals** | 5000                | 5000                 | 2000       |
+| **Column Totals** | 5000                | 5000                 | 10000       |
 
 
-For a given diagnostic test, there are many related parameters that we might care about. Some of these terms include prevalence, sensitivity, false negative rate, specificity, false positive rate, accuracy, likelihood ratio,and much more. I'm a visual person and wanted a way to represent these parameters and their relationships visually.
+For a given diagnostic test, there are many related parameters that we might care about. Some of these terms include prevalence, sensitivity, false negative rate, specificity, false positive rate, accuracy, likelihood ratio, and much more. I'm a visual person and wanted a way to represent these parameters and their relationships visually.
 
 The visualization below demonstrates the performance of diagnostic tests with relevant parameters marked along the outside of the square.
 
- * The square represent all people that receive our diagnostic test
- * The left column represent the people with the condition.
- * The right column represent healthy people.
+ * The square represents all people that receive our diagnostic test
+ * The left column represents the people with the condition.
+ * The right column represents healthy people.
  * The green regions represent *correct* test results.
 
-![Diagnositic test visualization](diagnostic_tests_01_fig1.png)
+![Diagnostic test visualization](diagnostic_tests_01_fig1.png)
 
 I'm working on an interactive version of this chart, so stay tuned. My hope is that being able to play with each parameter will result in a deeper intuition for how these parameters relate.
 

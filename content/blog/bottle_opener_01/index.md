@@ -9,7 +9,7 @@ tags = ["3D Printing"]
 image = "/blog/bottle-opener-01/bottle_opener_01_fig1.jpg"
 +++
 
-Biomedical engineering was a natural choice for me. It combines my knack for engineering with my desire to help people. Biomedical engineers are more or less guaranteed to work on projected intended to help people. The spark of altruism at the beginning of a project can slowly fade as a project get longer. This project came out of a desire to work a smaller project where I could see that spark through from beginning to end. Inspiration for this project come from two places. First, I stumbled upon [an article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6371113/) discussing the cost savings from 3D printing assistive devices. Second, I stumbled across [MakersMakingChange.com](https://makersmakingchange.com/) where such devices are posted.
+Biomedical engineering was a natural choice for me. It combines my knack for engineering with my desire to help people. Biomedical engineers are more or less guaranteed to work on projects intended to help people. The spark of altruism at the beginning of a project can slowly fade as a project gets longer. This project came out of a desire to work on a smaller project where I could see that spark through from beginning to end. Inspiration for this project comes from two places. First, I stumbled upon [an article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6371113/) discussing the cost savings from 3D printing assistive devices. Second, I stumbled across [MakersMakingChange.com](https://makersmakingchange.com/) where such devices are posted.
 
 ## Starting Point
 ![Bottle opener opener downloaded as a starting point](bottle_opener_01_fig1.jpg)
@@ -42,14 +42,14 @@ There were a few issues that I wanted to improve:
 ## Prototype 3 - Ready for Testing
 ![Prototype 3 of bottle opener](bottle_opener_01_fig4.jpg)
 
-I added several more sections of different diameters to the cap-gripping section. The handles were lengthened and materials was taken away from around the cap-gripper. This prototype works wonderfully. The are only a few bottle that it doesn't work on. If a bottle has a small cap and the neck of the bottle is much wider, the bottle opener can run into the bottle's neck before the cap gets to the right section of the cap-gripper.
+I added several more sections of different diameters to the cap-gripping section. The handles were lengthened and material was taken away from around the cap-gripper. This prototype works wonderfully. There are only a few bottles that it doesn't work on. If a bottle has a small cap and the neck of the bottle is much wider, the bottle opener can run into the bottle's neck before the cap gets to the right section of the cap-gripper.
 
 Next steps are to give it to a family member that has trouble opening bottles to get their feedback. Stay tuned.
 
 
 ## Other Ideas - Jamming
 
-I would like to try a design based on a jamming principle next. That is, when bottle opener is torqued against the cap, the applied torque works to close the gripers further. A small amount of pretension with a spring or rubber band should be applied to the jamming mechanism. This pretension keeps the jamming mechanism in contact with the cap. This design would have a clear advantage over the designs above. The amount of torque applied to the cap is not limited by a user's grip strength. The user just need to apply a force to the opener's handle and that force would be translated into a gripping action by the jamming mechanism. A key test of this device would be open a bottle without closing my hand.
+I would like to try a design based on a jamming principle next. That is, when the bottle opener is torqued against the cap, the applied torque works to close the grippers further. A small amount of pretension with a spring or rubber band should be applied to the jamming mechanism. This pretension keeps the jamming mechanism in contact with the cap. This design would have a clear advantage over the designs above. The amount of torque applied to the cap is not limited by a user's grip strength. The user just needs to apply a force to the opener's handle and that force would be translated into a gripping action by the jamming mechanism. A key test of this device would be to open a bottle without closing my hand.
 
 With a jamming mechanism bottle opener, the limiting factor may become the user's grip on the bottle itself. I'd like to build a jamming mechanism for holding the bottle secure to a kitchen countertop or table. Caps have a smaller range of sizes compared with bottles. I suspect the challenge will be to make a mechanism that can hold bottles of all different sizes securely.
 
